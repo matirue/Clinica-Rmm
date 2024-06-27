@@ -1,0 +1,28 @@
+<hr>
+<div class="contenedorBotones" >
+    
+    <div *ngFor="let paciente of listadoPacientes; let i = index" class="botones">
+
+        
+        
+            
+            
+        
+        <label >Paciente:</label> 
+        <button (click)="seleccionPaciente(paciente)" style="background: url('{{paciente.fotoPerfil}}')no-repeat; background-size: 300px;" class="btn buttonEspecialista button5 btn-redondo">
+
+                
+                    <strong>
+                        {{paciente.nombre}}
+                    </strong>
+                    <strong> {{paciente.apellido}}</strong>
+                </button>
+        <div>
+
+            <hr>
+        </div>
+        
+    </div>
+    
+
+</div>

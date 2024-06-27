@@ -1,0 +1,203 @@
+<div class="miPerfil">
+  <div class="container">  
+    <div class="mi-card">  
+      <div class="row"  *ngIf="usuarioLogueado.paciente"> 
+        <div class="col-sm-8 col-paciente">
+          <div>
+            <img style="width: 60%;" src={{usuarioLogueado.fotoPerfil}}> 
+          </div>
+          <div>  
+            <img style="width: 60%;" src={{usuarioLogueado.fotoPerfilDos}}>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <h2 class="card-title-paciente">Paciente</h2>
+          <p><strong>Nombre: </strong>{{usuarioLogueado.apellido}}, {{usuarioLogueado.nombre}}</p>    
+          <p><strong>Dni: </strong>{{usuarioLogueado.dni}}</p>
+          <p><strong>Edad: </strong>{{usuarioLogueado.edad}}</p>
+          <p><strong>Email: </strong> {{usuarioLogueado.email}}</p>
+          <p><strong>Te uniste el: </strong> {{getFormattedDate(usuarioLogueado.fecha)}}</p>
+        </div>
+      </div> 
+  
+      <div *ngIf="!usuarioLogueado.paciente" class="default-card">
+        <div class="imagen">
+          <img src={{usuarioLogueado.fotoPerfil}}>
+        </div>
+        <div class="info">
+          <h2 *ngIf="usuarioLogueado.admin" class="card-title-admin">Administrador</h2>
+          <h2 *ngIf="usuarioLogueado.especialista" class="card-title-especialista">Especialista</h2>
+          <p><strong>Nombre: </strong>{{usuarioLogueado.apellido}}, {{usuarioLogueado.nombre}}</p>   
+          <p *ngIf="usuarioLogueado.especialista"><strong>Nombre: </strong>Dr. {{usuarioLogueado.apellido}}, {{usuarioLogueado.nombre}}</p>    
+          <p *ngIf="usuarioLogueado.especialista" ><strong>Especialidad: </strong>{{ usuarioLogueado.descripcion }}</p>
+          <p><strong>Dni: </strong>{{usuarioLogueado.dni}}</p>
+          <p><strong>Edad: </strong>{{usuarioLogueado.edad}}</p>
+          <p><strong>Email: </strong> {{usuarioLogueado.email}}</p>
+          <p><strong>Te uniste el: </strong> {{getFormattedDate(usuarioLogueado.fecha)}}</p>
+        </div>
+      </div>
+
+      <!-- Exportador 
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <div *ngIf="usuarioLogueado.admin" class="form">
+                    <button type="submit" (click)="exportarExcel()">Exportar todos los usuarios a excel</button>              
+                  </div>
+                  <div *ngIf="usuarioLogueado.paciente" class="form">
+                    <button type="submit" (click)="exportarPdf()">Exportar todos los turnos a PDF</button>              
+                  </div>
+                </div>
+                
+              </div> -->
+  
+    </div> 
+  </div>
+
+  <div *ngIf="usuarioLogueado.paciente && !flag && !usuarioLogueado.admin ">
+    
+    <app-mostrar-historia
+    [historia]="historia"
+    >
+
+    </app-mostrar-historia>
+    
+  </div>
+  <!-- <div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
+  <div id="chartContainerTurnosDia" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div> -->
+  <div>
+
+  </div>
+  <div class="form" *ngIf="usuarioLogueado.admin">
+    <!-- <button  type="submit" (click)="descargarLogsAPDF()">
+      Descargar logs pdf
+    </button> -->
+  
+  </div>
+  <!-- <div id="chart0" *ngIf="usuarioLogueado.admin">
+    <table class="table table-striped form-group table-hover">
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>Dia de ingreso</th>
+              <th>Hora de ingreso</th>
+
+          </tr>
+      </thead>
+      <tbody>
+          <tr  *ngFor="let log of logs">
+              <td *ngIf="log.usuario.uid != null && log.usuario.uid != ''">{{log.usuario.nombre}}</td>
+              <td *ngIf="log.usuario.uid != null && log.usuario.uid != ''">{{log.usuario.apellido}}</td>
+              <td *ngIf="log.usuario.uid != null && log.usuario.uid != ''">{{log.usuario.email}}</td>
+              <td *ngIf="log.usuario.uid != null && log.usuario.uid != ''">{{log.dia.split('-').reverse().join('-')| date}}</td>
+              <td *ngIf="log.usuario.uid != null && log.usuario.uid != ''">{{log.hora}}</td>
+
+            
+              </tr>
+
+              
+          </tbody>
+          
+    </table>
+  </div> -->
+
+<!-- ARREGLAR 
+<div id="charts" *ngIf="usuarioLogueado.admin">
+  
+  <div id="chart1" [chart]="chartCantPorDia"></div>
+  <div  id="chart1Aux"></div>
+  <div class="form">
+    <button  type="submit" (click)="descargarCantTurnosPorDiaAPdf()">
+      Descargar grafico a PDF
+    </button>
+  </div>
+  
+  <div id="chart2" [chart]="chartEspPorTurno"></div>
+  <div class="form">
+  <button  type="submit" (click)="descargarCantEspPorTurno()">
+    Descargar grafico a PDF
+    </button>
+  </div>
+
+
+  <div >
+    <h2>Seleccione la fecha para filtrar la cantidad de turnos solicitados por medico</h2>
+    <input (change)="chartTurnosPorMedicoFecha()" [(ngModel)]="fechaSeleccionadaPicker" id="date" type="date">
+    
+  </div>
+  <div id="chart3" [chart]="chartTurnoPorMedicoFecha"></div>
+  <div class="form">
+    <button  type="submit" (click)="descargarCantTurnosSolicitados()">
+      Descargar grafico a PDF
+    </button>
+  </div>
+
+
+
+  <div >
+    <h2>Seleccione la fecha para filtrar la cantidad de turnos realizados por medico</h2>
+    <input (change)="chartTurnosPorMedicoFechaFinalizado()" [(ngModel)]="fechaSeleccionadaPickerRealizado" id="date" type="date">
+    
+  </div>
+  <div id="chart4" [chart]="chartTurnoPorMedicoFechaFinalizado"></div>
+  <div class="form">
+    <button  type="submit" (click)="descargarCantTurnosFinalizados()">
+      Descargar grafico a PDF
+    </button>
+  </div>
+</div> -->
+  <!-- <div *ngIf="usuarioLogueado.admin">
+    <button (click)="descargarPdf()">
+      Descargar pdf
+    </button>
+
+    </div> -->
+
+
+  <!-- PARAMETROS DEL MEDICO -->
+  <div *ngIf="usuarioLogueado.especialista" style="margin: 20px 90px;">    
+      <div class="row row-cols-1 row-cols-sm-1 mb-3 text-center cardHistoria">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm" >
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal"><strong>Sumar disponibilidad</strong></h4>
+            </div>
+            <div class="card-body"> 
+                <div> 
+                  <label class="custom-control-label">Seleccione dia de la semana: </label>
+                  <div *ngIf="seleccioneDia">
+                    <label class="custom-control-label"> {{sliderDiaSemanaString}}</label>
+                  </div>
+                  
+                  <br>
+                  <input type="range" min="1" max="6" type="range" (change)="calcularSlider() ; seleccioneDia = true" [(ngModel)]="sliderDiaSemana">
+                  <br>
+                  <div *ngIf="seleccioneDia">
+                    <label class="custom-control-label">Indique la hora hasta que atendera: </label>
+                    <label *ngIf="sliderHoraComienzo != undefined" class="custom-control-label"> {{sliderHoraComienzo}} hs</label>
+
+                    <br>
+                    <input type="range" min="8" max={{maxSliderHora}} type="range"  (change)="calcularSlider(); seleccioneHora = true" [(ngModel)]="sliderHoraComienzo">
+                  </div>
+                  <div *ngIf="seleccioneHora">
+                    <label class="custom-control-label">Indique la cantidad de turnos a tomar: </label>
+                    <label *ngIf="sliderCantTurnos != undefined" class="custom-control-label">  {{sliderCantTurnos}} turnos</label>
+                    <br>
+                    <input type="range" min="1" max={{maxSliderTurno}} type="range" (change)="calcularSlider()" [(ngModel)]="sliderCantTurnos">
+                  </div>             
+                </div>              
+               
+              <div *ngFor="let esp of usuarioLogueado.descripcion"> 
+                <button class="w-100 btn btn-lg btn-outline-primary" (click)="seleccionDispo(esp)">Agregar turno para {{esp}}</button>                 
+                <br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+    
+</div>
+
+    

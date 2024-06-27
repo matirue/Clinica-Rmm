@@ -1,0 +1,164 @@
+<!-- <div class="colorNav">
+    <nav class="navbar navbar-custom navbar-expand-sm fixed-top custom-toggler">
+      <button class="navbar-toggler ml-auto" type="button"
+      data-toggle="collapse" 
+      data-target="#navbarToggler" 
+      aria-controls="navbarToggler"
+      (click)="toggleNavbar = !toggleNavbar"
+        aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon my-toggler"></span>
+      </button>
+      <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarToggler" [ngbCollapse]="toggleNavbar">
+        <a class="navbar-brand" [routerLink]="'/'"><img src="assets/letra-m.png"></a>
+        
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+          
+          <li class="nav-item" *ngIf="!usuarioLogueado">
+            <a [routerLink]="'ingreso/login'" routerLinkActive="active" class="nav-link borderFade">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="!usuarioLogueado">
+            <a [routerLink]="'ingreso/registro'" routerLinkActive="active" class="nav-link borderFade" >Registrarse</a>
+          </li>
+          
+          <div *ngIf="usuarioLogueado != null" class="contenedorLi">
+            <li class="nav-item" *ngIf="usuarioLogueado.admin">
+              <a [routerLink]="'/admin'" routerLinkActive="active" class="nav-link borderFade">Administrar usuarios</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link borderFade" *ngIf="this.usuarioLogueado.paciente || this.usuarioLogueado.especialista" [routerLink]="'/misturnos'">Mis Turnos</a>
+  
+            </li>
+            <li class="nav-item">
+              <a class="nav-link borderFade" *ngIf="this.usuarioLogueado.admin" [routerLink]="'/misturnos'">Listado de turnos</a>
+              
+            </li>
+            <li class="nav-item">
+              <a class="nav-link borderFade" *ngIf="(this.usuarioLogueado != null && this.usuarioLogueado.paciente )|| (this.usuarioLogueado != null && this.usuarioLogueado.admin)" 
+              [routerLink]="'/solicitarTurno'">Solicitar Turno</a>
+  
+            </li>
+            <li class="nav-item">
+              <a class="nav-link borderFade" [routerLink]="'/miperfil'">Mi Perfil</a>
+  
+            </li>
+            <li class="nav-item">
+              <a class="nav-link borderFade" (click)="desloguear()" >Desloguear</a>
+  
+            </li>
+            <div class="d-flex flex-row-reverse bd-highlight">
+              <div class="p-2 bd-highlight bienvenido">
+                <li>
+                  <a>
+                    Bienvenido: {{usuarioLogueado.nombre}}, {{usuarioLogueado.apellido}}
+    
+                  </a>
+                </li>
+
+              </div>
+
+            </div>
+          </div>
+             
+        </ul>
+  
+      </div>
+    </div>
+    </nav>
+  </div> -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
+    <div class="container-fluid">
+        <a class="py-2" href="#">
+            <img class="card-img-top" src="./../../../assets/letra-m.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" *ngIf="!usuarioLogueado">
+                    <a [routerLink]="'ingreso/login'" routerLinkActive="active" class="nav-link borderFade">Iniciar
+                        Sesion</a>
+                </li>
+                <li class="nav-item" *ngIf="!usuarioLogueado">
+                    <a [routerLink]="'ingreso/registro'" routerLinkActive="active"
+                        class="nav-link borderFade">Registrarse</a>
+                </li>
+
+                <div *ngIf="usuarioLogueado != null" class="contenedorLi">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item" *ngIf="usuarioLogueado.admin">
+                            <a [routerLink]="'/admin'" routerLinkActive="active"
+                                class="nav-link borderFade">Administrar usuarios</a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link borderFade" *ngIf="this.usuarioLogueado.paciente || this.usuarioLogueado.especialista" [routerLink]="'/misturnos'">Mis Turnos</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link borderFade" *ngIf="this.usuarioLogueado.admin" [routerLink]="'/misturnos'">Listado de turnos</a>                          
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link borderFade" 
+                          *ngIf="(this.usuarioLogueado != null && this.usuarioLogueado.paciente )" 
+                          [routerLink]="'/solicitarTurno'">Solicitar Turno</a>
+
+                        <!-- <li class="nav-item" *ngIf="usuarioLogueado.especialista">
+                            <a [routerLink]="'/pacientes'" routerLinkActive="active"
+                                class="nav-link borderFade">Pacientes</a>
+                        </li> -->
+                        <!-- 
+                        <li class="nav-item">
+                            <a class="nav-link borderFade"
+                                *ngIf="this.usuarioLogueado.paciente || this.usuarioLogueado.especialista"
+                                [routerLink]="'/turnos'">Mis Turnos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link borderFade" *ngIf="this.usuarioLogueado.admin"
+                                [routerLink]="'/turnos'">Listado de turnos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link borderFade"
+                                *ngIf="(this.usuarioLogueado != null && this.usuarioLogueado.paciente ) || (this.usuarioLogueado != null && this.usuarioLogueado.admin)"
+                                [routerLink]="'/altaTurno'">Solicitar un nuevo Turno</a>
+                        </li> -->
+                        <!-- <li class="nav-item">
+                            <a class="nav-link borderFade" [routerLink]="'/perfil'">Perfil</a>
+                        </li> -->
+                    </ul>
+
+                </div>
+
+
+            </ul>
+
+            <div class="text-end">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="usuarioLogueado">
+                    <li class="nav-item">
+                        <a class="nav-link borderFade" *ngIf="(this.usuarioLogueado.paciente)" [routerLink]="'/miperfil'">
+                            <i>Bienvenido {{usuarioLogueado.nombre}}, {{usuarioLogueado.apellido}} </i>
+                        </a>
+                        <a class="nav-link borderFade" *ngIf="(this.usuarioLogueado.especialista)" [routerLink]="'/miperfil'">
+                            <i>Dr. {{usuarioLogueado.nombre}}, {{usuarioLogueado.apellido}} </i>
+                        </a>
+                        <a class="nav-link borderFade" *ngIf="(this.usuarioLogueado.admin)" [routerLink]="'/miperfil'">
+                            <i>Admin: {{usuarioLogueado.nombre}}, {{usuarioLogueado.apellido}} </i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link borderFade" (click)="desloguear()"> Cerrar Sesion</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</nav>

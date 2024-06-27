@@ -1,0 +1,202 @@
+.contenedorBotones{
+    height: auto;
+    display:flex;
+    flex-direction: row;
+    
+  }
+  .label{
+    padding-top: -30%;
+  }
+  .botones{
+    padding: 2%;
+  }
+  .labelEspl{
+      
+  }
+  h1{
+    color: c;
+  }
+  .btn:hover{
+    box-shadow: 0px 8px 15px rgb(0, 0, 0);
+    opacity: 1;
+  
+  }
+  .buttonEspecialista {
+    
+    background-repeat:no-repeat;
+    background-position: center center;
+    /* min-height:20%; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-size: 95%;
+    
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    position: relative;
+  
+    
+  }
+  
+  
+  .btn-redondo {    
+    display:block;
+    height: 200px;
+    width: 200px;
+    border: 1px solid rgb(165, 67, 67);
+    box-shadow: 0px 8px 15px rgb(31, 93, 65);   
+    border-radius: 20%;
+    
+  }
+  .label{
+    flex-direction: column;
+  }
+  .medico {
+    border-right: 1px solid #333;
+  }
+  .appTooltip {
+    text-align: center;
+    padding: 0 50px;
+  }
+  .appTooltip [tooltip] {
+    display: inline-block;
+    margin: 50px 20px;
+    width: 180px;
+    height: 50px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    line-height: 50px;
+    text-align: center;
+  }
+  .ng-tooltip {
+    position: absolute;
+    max-width: 150px;
+    font-size: 14px;
+    text-align: center;
+    color: #f8f8f2;
+    padding: 3px 8px;
+    background: #282a36;
+    border-radius: 4px;
+    z-index: 1000;
+    opacity: 0;
+  }
+  .ng-tooltip:after {
+    content: "";
+    position: absolute;
+    border-style: solid;
+  }
+  .ng-tooltip-top:after {
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-color: black transparent transparent transparent;
+  }
+  .ng-tooltip-bottom:after {
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-color: transparent transparent black transparent;
+  }
+  .ng-tooltip-left:after {
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-color: transparent transparent transparent black;
+  }
+  .ng-tooltip-right:after {
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-color: transparent black transparent transparent;
+  }
+  .ng-tooltip-show {
+    opacity: 1;
+  }
+  .register-page {
+  
+    height: auto;
+    padding: 5% 0 0;
+    margin: auto;
+    animation-name: loginRegister;
+    animation-duration: 0.2s;
+    
+  }
+  @keyframes loginRegister {
+    0% {
+      width: 0px;
+      opacity: 0;
+    }
+    100% {
+      width: 500px;
+      opacity: 1;
+    }
+  }
+  .form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    width: 90%;
+    margin: 0 auto 100px;
+    padding: 30px;
+    
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    align-items: center;
+    flex-wrap: wrap;
+
+  }
+  .labelMedico{
+    
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  

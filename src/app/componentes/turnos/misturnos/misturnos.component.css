@@ -1,0 +1,237 @@
+  .misturnos{
+    margin: 10px 60px 20px 60px;
+
+    background-color: #4397a081;
+
+    padding: 20px 50px;
+
+    .list-group{
+      margin-top: 10px;
+    }
+
+    .layout {
+      margin-top: 20px;
+      max-width: 1786px; 
+    
+      display: grid;
+      grid-template-rows: repeat(auto-fit, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+  }
+ 
+  .aceptado {
+    color: rgb(51, 51, 225);
+  }
+  
+  .rechazado {
+    color: red;
+  }
+  
+  .pendiente {
+    color: rgb(175, 175, 49);
+  }
+  
+  .cancelado {
+    color: #ac7777;
+  }
+
+  .realizado {
+    color: #43A047;
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+table{
+    margin-top: 8%;
+}
+.busqueda{
+    margin-top: 10%;
+}
+
+.btn-aceptar {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #3381e1;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn-aceptar:hover, .btn-aceptar:active, .btn-aceptar:focus {
+  background: #4e8dda;
+}
+
+.btn-rechazar {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: red;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn-rechazar:hover, .btn-rechazar:active, .btn-rechazar:focus {
+  background: rgb(255, 94, 94);
+}
+
+.btn-cancelar {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #ac7777;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn-cancelar:hover, .btn-cancelar:active, .btn-cancelar:focus {
+  background: #775e5e;
+}
+
+.btn-finalizar {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn-finalizar:hover, .btn-finalizar:active, .btn-finalizar:focus {
+  background: #43A047;
+}
+
+.btn-resenia {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: gray;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn-resenia:hover, .btn-resenia:active, .btn-resenia:focus {
+  background: #a8a8a8;
+}
+
+button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+button:hover, button:active, button:focus {
+  background: #43A047;
+}
+@media only screen and (max-width:500px) {
+  .misturnos{
+    padding-top: 5%;
+  }
+  /* For mobile phones: */
+  small{
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  /* For desktop: */
+  .misturnos{
+    padding-top: 5%;
+  }
+  
+}

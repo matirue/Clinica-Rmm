@@ -1,0 +1,20 @@
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center cardHistoria">
+    <div class="col" *ngFor="let hist of historia | slice:0:3">
+      <div class="card mb-4 rounded-3 shadow-sm" >
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Paciente: {{hist.turno.paciente.nombre}}</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title"><p>
+            <strong>
+              Atencion {{hist.turno.fecha}}
+            </strong>
+            {{hist.turno.especialidad}}
+          </p>
+          <small class="text-muted fw-light"></small></h1>
+          <button class="btn btn-primary" (click)="verHistoria(hist)">Ver historia clinica</button>
+          
+        </div>
+      </div>
+    </div>
+</div>

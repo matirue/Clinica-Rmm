@@ -1,0 +1,376 @@
+@media only screen and (min-width: 600px) { 
+  .register-page {width: 50%;}  
+}
+@media only screen and (min-width: 768px) { 
+  .register-page {width: 80%;}
+  
+}
+@media only screen and (max-width:500px) { 
+  .register-page {
+    height: 500px;
+    
+  }
+  .botones{
+    height: 800px;
+  }
+} 
+
+.borderFade {
+    padding-bottom: 1px;
+    color: hsl(222, 25%, 14%);
+    position: relative;
+}
+
+.borderFade::after {
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    transform: translateY(3px);
+    background: hsl(243, 80%, 62%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.borderFade:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+small{
+    color:red;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  border-radius: 35px;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.btn-circle {
+  width: 55px;
+  height: 55px;
+  padding: 4px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
+  background-color: #4CAF50;
+}
+
+.mas{
+  display: flex;
+  /* flex-direction: row; */
+}
+.register-page {
+  
+  height: auto;
+  padding: 5% 0 0;
+  margin: auto;
+  animation-name: loginRegister;
+  animation-duration: 0.2s;
+  
+}
+@keyframes loginRegister {
+  0% {
+    width: 0px;
+    opacity: 0;
+  }
+  100% {
+    width: 500px;
+    opacity: 1;
+  }
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  /* max-width: 360px; */
+  margin: 0 auto 100px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input{
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;  
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 5px;
+  border-width: 1px;
+
+  border-color: #000000;
+}
+select{
+    font-family: "Roboto", sans-serif;
+  outline: 0;
+  /* background: #f2f2f2; */
+  width: 100%;
+  /* border: 0; */
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: #000000;
+}
+
+.form button.botonSubmit{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: cornflowerblue;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.form button.botonSubmit:hover,.form button.botonSubmit:active,.form button.botonSubmit:focus {
+  background: rgb(69, 184, 43);
+}
+
+.form button.botonSubmit-create{
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: rgb(237, 203, 100);
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.form button.botonSubmit-create:hover,.form button.botonSubmit-create:active,.form button.botonSubmit-create:focus {
+  background: rgb(187, 181, 98);
+}
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+body {
+  background: #76b852; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+
+
+.bloque-especialidad{
+  margin-top: 20px;
+
+  .especialidad-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;  
+
+    input {
+      width: 5% !important;
+    }
+  }
+
+  .custom-control-label {  
+      margin-bottom: -10px;
+      margin-top: -25px;
+  }
+
+  .especialidad-container:nth-child(even) {
+      float: right;  
+      width: 48%;  
+  }
+
+  .especialidad-container:nth-child(odd) {
+      width: 48%;  
+      clear: both;
+  }
+
+  
+}
+
+
+.buttonEspecialista {
+  background: url("./../../../assets/img/logoDoc.png");
+  background-repeat:no-repeat;
+  background-position: center center;
+  /* min-height:20%; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-size: 95%;
+  
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  position: relative;
+
+  
+}
+.buttonAdmin {
+  background: url("./../../../assets/img/logoAdmin.png");
+  background-repeat:no-repeat;
+  background-position: center center;
+  /* min-height:20%; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-size: 80%;
+  
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  position: relative;
+
+  
+}
+.buttonPaciente {
+  background: url("./../../../assets/img/logoPac.png");
+  background-repeat:no-repeat;
+  background-position: center center;
+  /* min-height:20%; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-size: 100%;
+  
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  position: relative;
+  content: none;
+
+  
+}
+.btn:hover{
+  box-shadow: 0px 0px 15px 5px rgb(237, 100, 100);
+  opacity: 1;  
+}
+img{
+  width:50%;
+}
+.button1 {border-radius: 2px;}
+.button2 {border-radius: 4px;}
+.button3 {border-radius: 8px;}
+.button4 {border-radius: 12px;}
+.button5 {border-radius: 15%;}
+
+.btn-redondo {
+  display:block;
+  /* height: 150px; */
+  /* width: 150px; */
+  height: 400px;
+  width: 100%;
+  /* border-radius: 50%;   */
+  /* border: 1px solid rgb(0, 0, 0);   */
+  opacity: 0.8;
+  box-shadow: 0px 8px 15px rgb(45, 76, 133);  
+  
+}
+
+h1{
+  color: cornflowerblue;
+
+  margin-bottom: 30px;
+}
+
+h3{
+  color: cornflowerblue;
+}
+
+label {
+  color: cornflowerblue;
+  font-size: 18px;
+  font-weight: 700;
+
+  margin-bottom: 10px;
+}
+
+.btnVolver:hover{
+  box-shadow: 0px 10px 15px #6ed571;
+  opacity: 1;  
+}
+
+.btnVolver-Volver{
+  display:block;
+  height: 50px;
+  width: 100px;
+   border-radius: 50%;
+  border: 1px solid rgb(0, 0, 0);    
+  opacity: 0.8;
+  box-shadow: 0px 8px 15px #2e6430;
+
+  /* background: url("https://www.pngfind.com/pngs/m/193-1934895_back-png-flecha-de-regresar-png-transparent-png.png");
+  background-repeat:no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-size: 95%; */
+
+  color: #43A047;
+  font-size: 25px;
+  font-weight: 1000;
+}
+
+.captcha{
+  /* top: 50%; */
+  left: 50%;
+  display: inline-block;
+
+}
+.botones{
+  display: flex;
+  align-items: center;
+  padding: 2% 0 3%;
+}
+
+.botonesSinAdm{  
+  display: flex;
+  align-items: center;
+  /* padding: 2% 0% 3% 10%;  */
+}

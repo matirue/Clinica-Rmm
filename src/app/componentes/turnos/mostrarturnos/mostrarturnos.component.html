@@ -1,0 +1,63 @@
+<div >
+    
+    <div class="busqueda" role="main">
+        <div class="card">
+          <div class="form-group">
+            <!-- <label for="search-text">Search Text</label> -->
+            <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+              [(ngModel)]="textoABuscar" placeholder="Ingrese especialidad o especialista a buscar" 
+              autofocus>
+          </div>
+    </div>
+</div>
+
+<table class="table table-striped form-group table-hover">
+    <thead>
+        <tr>
+            <th>Especialidad</th>
+            <th>Especialista</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+            <th>Paciente</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let turno of turnos | appFilter: textoABuscar; let i = index">
+            <td>{{turno.especialidad}}</td>
+            <td>{{turno.especialista.nombre}}, {{turno.especialista.apellido}}</td>
+            <td>{{turno.estado}}</td>
+            <td>{{turno.fecha | date: "medium"}}</td>
+            <td>{{turno.paciente.nombre}}, {{turno.paciente.apellido}}</td>
+            <!-- <td><button type="button" *ngIf="usuario.aprobadoPorAdmin"(click)="habilitar(usuario,i)">{{mensajeHabilitado}}</button> </td>
+            <td><button type="button" *ngIf="!usuario.aprobadoPorAdmin"(click)="habilitar(usuario,i)">{{mensajeDeshabilitado}}</button> </td> -->
+            
+              
+            <!-- <form [formGroup]="formGroupCheck"> -->
+                <!-- <div class="form-check" > -->
+            <td *ngIf="turno.estado == 'ACEPTADO'">
+                <button class="btn btn-primary" (click)="cancelarTurno(turno,i)">Cancelar turno</button>
+
+
+            </td>
+                <!-- </div> -->
+                <!-- <div class="row" *ngIf="!spinner"> -->
+                <!-- </div> -->
+
+            <!-- </form> -->
+            
+            
+            <!-- <button *ngIf="habilitado" (click)="deshabilitar(usuario,i)">{{mensajeBoton}}</button> -->
+            <!-- <td><button *ngIf="usuario.aprobadoPorAdmin" (click)="deshabilitar(usuario,i)">{{mensajeBoton}}</button></td> -->
+
+            <!-- <td><button (click)="aprobarUsuario(usuario,i)">Aprobar</button></td> -->
+            <!-- <td><button type="button" class="btn btn-info  btn-circle" (click)="mostrarDetalles(alumno)"><i class="fa fa-check"></i> -->
+                <!-- </button></td> -->
+            </tr>
+
+            
+        </tbody>
+        
+    </table>
+
+</div>

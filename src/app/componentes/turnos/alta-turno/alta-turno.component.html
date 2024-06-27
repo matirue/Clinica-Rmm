@@ -1,0 +1,43 @@
+<div class="solicitarTurno">    
+    <br>
+    <h1 class="text-center text-primary">Solicitar turno</h1>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <app-listarmedicos [especialistas]="espAux" (eventoSeleccionMedico)="capturarMedicoSeleccion($event)"
+                (eventoSeleccionEspecialidad)="capturarEspSeleccionada($event)" >        
+            </app-listarmedicos>
+        </div>
+
+        <div class="col-sm-6">
+            <app-listar-especialidades [especialidades]="especialidades" (eventoFiltroEspecialidad)="filtrarEspecialidad($event)"></app-listar-especialidades>
+        </div>
+    </div>
+    <!-- <div >
+        <app-listarmedicos [especialistas]="espAux" 
+            (eventoSeleccionMedico)="capturarMedicoSeleccion($event)"
+            (eventoSeleccionEspecialidad)="capturarEspSeleccionada($event)" >        
+        </app-listarmedicos>
+    </div> -->
+    <div *ngIf="usuarioLogueado.admin && seleccioneMedico">
+        <app-listar-pacientes 
+            [listadoPacientes]="pacientes"
+            (eventoSeleccionPaciente)="capturarSeleccionPaciente($event)"
+            >
+        </app-listar-pacientes>
+    </div>
+    <div *ngIf="seleccioneMedico && seleccioneEspecialidad && seleccionePaciente" class="listadoTurnos">
+        <app-listarturnos [listadoTurnos]="listadoTurnos"
+        [especialidadSeleccionada]="especialidadSeleccionada"
+        [medico]="medicoSeleccionado"
+        (eventoSeleccionHorario)="capturarEventoTomarTurno($event)"
+        [seleccioneMedico]="seleccioneMedico"
+        >
+
+        </app-listarturnos>
+    </div>
+
+    <!-- <app-listar-especialidades [especialidades]="especialidades" (eventoFiltroEspecialidad)="filtrarEspecialidad($event)"></app-listar-especialidades> -->
+
+    
+</div>

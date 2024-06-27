@@ -1,0 +1,146 @@
+<!-- <div *ngIf="mostrarHistoria">
+    <app-historia-clinica [turnoSeleccionado]="turnoSeleccionado"></app-historia-clinica>
+
+</div> -->
+<div class="misturnos" *ngIf="!mostrarHistoria">    
+    <h2 class="text-center" *ngIf="!usuarioLogueado.admin">Mis Turnos</h2>
+    <h2 class="text-center text-danger" *ngIf="usuarioLogueado.admin">Turnos registrados en el sistema</h2>
+
+    <!-- VISTA PACIENTE -->
+    <div id="pacienteLogueado" *ngIf="usuarioLogueado.paciente" style="margin-top: -5%;">
+        <div class="busqueda" role="main">
+            <div class="card">
+              <div class="form-group" *ngIf="usuarioLogueado.paciente">
+                <label for="search-text">Filtro</label>
+                <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+                  [(ngModel)]="textoABuscar" placeholder="Ingrese una palabra clave para realizar busqueda por medico, paciente, turno o historia clinica" 
+                  autofocus>
+              </div>              
+            </div>
+        </div>
+        <div class="layout">
+            <div *ngFor="let turno of misTurnos | appFilter: textoABuscar; let i = index">
+                <a class="list-group-item list-group-item-action" >
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{turno.especialidad}}</h5>
+                        <b>{{turno.fecha.split('/').reverse().join('-') | date}} / {{turno.hora}}</b>
+                    </div>
+                    <p class="mb-1">Especialista: <i>Dr. {{turno.especialista | medico: turno.especialista}}</i></p>
+                    
+                    <p>Estado: <strong [ngClass]="getEstadoClass(turno.estado)">{{turno.estado}}</strong></p>
+        
+                    <small>Paciente: {{turno.paciente.nombre}}, {{turno.paciente.apellido}}</small>
+                    <td *ngIf="turno.estado != 'REALIZADO' && turno.estado != 'CANCELADO' && turno.estado != 'RECHAZADO'">
+                        <button class="btn btn-cancelar" (click)="cancelarTurno(turno)">Cancelar el turno</button>
+                    </td>
+                    <td *ngIf="turno.resenia != undefined && turno.resenia != '' ">
+                        <button class="btn btn-resenia" (click)="verResenia(turno)">Ver reseña</button>
+                    </td>               
+                    <td *ngIf="turno.estado == 'REALIZADO' && turno.comentarioPaciente.length === 0">
+                        <button class="btn btn-primary" (click)="calificarAtencion(turno)">Calificar Atención</button>
+                    </td>
+                    <!-- <td *ngIf="turno.estado == 'REALIZADO' && turno.resenia != '' && turno.resenia != undefined"><button class="btn btn-primary" (click)="completarEncuesta(turno)">Completar encuesta</button></td> -->
+                </a>
+    
+            </div>
+            
+        </div>
+
+    </div>
+
+    <!-- VISTA ESPECIALISTA -->
+    <div *ngIf="usuarioLogueado.especialista" style="margin-top: -5%;">    
+        <div class="busqueda" role="main">
+            <div class="card">
+                <div class="form-group" *ngIf="usuarioLogueado.especialista">
+                    <label for="search-text">FILTRO</label>
+                    <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+                    [(ngModel)]="textoABuscar" placeholder="Ingrese paciente o especialidad a buscar" 
+                    autofocus>
+                </div>
+
+            </div>
+        </div>
+        <div class="layout">
+            <div *ngFor="let turno of misTurnos | appFilter: textoABuscar; let i = index">
+                <a class="list-group-item list-group-item-action" >
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{turno.especialidad}}</h5>
+                        <b>{{ turno.fecha.split('/').reverse().join('-') | date}} / {{turno.hora}}</b>
+                    </div>
+                    <p class="mb-1">Especialista: <i>Dr. {{turno.especialista | medico: turno.especialista}}</i></p>
+                    
+                    <p>Estado: <strong [ngClass]="getEstadoClass(turno.estado)">{{turno.estado}}</strong></p>
+        
+                        <small>Paciente: {{turno.paciente.nombre}}, {{turno.paciente.apellido}}</small>
+                        
+                        <td *ngIf="turno.estado != 'REALIZADO' && turno.estado != 'RECHAZADO' && turno.estado != 'CANCELADO' && turno.estado != 'ACEPTADO'">
+                            <button class="btn btn-aceptar" (click)="aceptarTurno(turno)">Aceptar</button>
+                        </td>
+                        <td *ngIf="turno.estado != 'ACEPTADO' && turno.estado != 'RECHAZADO' && turno.estado != 'CANCELADO'">
+                            <button class="btn btn-cancelar" (click)="cancelarTurno(turno)">Cancelar</button>
+                        </td>
+                        <td *ngIf="turno.estado != 'ACEPTADO' && turno.estado != 'REALIZADO' && turno.estado != 'RECHAZADO' && turno.estado != 'CANCELADO'">
+                            <button class="btn btn-rechazar" (click)="rechazarTurno(turno)">Rechazar</button>
+                        </td>
+                        <td *ngIf="turno.estado == 'ACEPTADO'">
+                            <button class="btn btn-finalizar" (click)="finalizarTurno(turno)">Finalizar</button>
+                        </td>
+                        <td *ngIf="turno.resenia != undefined && turno.resenia != '' ">
+                            <button class="btn btn-resenia" (click)="verResenia(turno)">Ver reseña</button>
+                        </td>
+                        <!-- <td *ngIf="turno.estado == 'REALIZADO'"><button class="btn btn-primary" (click)="cargarHistoriaClinica(turno)">Cargar historia clinica</button></td> -->
+                        
+                </a>
+    
+            </div>
+            
+        </div>
+
+        <!-- <div class="list-group">
+            <div *ngIf="usuarioLogueado.especialista">
+                <app-mostrar-historia-medico [historia]="historias">
+
+                </app-mostrar-historia-medico>
+            
+            </div>
+        </div> -->
+    </div>
+
+
+    <!-- VISTA ADMINISTRADOR -->
+    <div *ngIf="usuarioLogueado.admin" style="margin-top: -5%;">    
+        <div class="busqueda" role="main">
+            <div class="card">
+                <div class="form-group">
+                    <label for="search-text">FILTRO</label>
+                    <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+                    [(ngModel)]="textoABuscar" placeholder="Ingrese especialidad o especialista a buscar" 
+                    autofocus>
+                </div>
+
+            </div>
+        </div>
+        <div class="layout">
+            <div *ngFor="let turno of allTurnos | appFilter: textoABuscar; let i = index">
+                <a class="list-group-item list-group-item-action" >
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{turno.especialidad}}</h5>
+                        <small>{{turno.fecha.split('/').reverse().join('-') | date: "yyyy-MM-dd"}} / {{turno.hora}}</small>
+                    </div>
+                    <p class="mb-1">Especialista: <i>Dr. {{turno.especialista | medico: turno.especialista}}</i></p>
+                    <p>Estado: <strong [ngClass]="getEstadoClass(turno.estado)">{{turno.estado}}</strong></p>
+                    <small>Paciente: {{turno.paciente.nombre}}, {{turno.paciente.apellido}}</small>
+                    <!-- <td *ngIf="turno.estado != 'ACEPTADO' && turno.estado != 'RECHAZADO' && turno.estado != 'CANCELADO'"><button class="btn btn-primary" (click)="cancelarTurno(turno)">Cancelar turno</button></td> -->
+                        
+                </a>
+    
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+
+</div>

@@ -1,0 +1,47 @@
+<!-- <ngx-spinner
+    bdColor="rgba(51,51,51,0.8)"
+    size="medium"
+    color="#fff"
+    type="ball-clip-rotate"
+    ></ngx-spinner> -->
+<div class="historia-clinica">
+    <div class="form">
+        
+        <form class="form-group" [formGroup]="formGroup" (ngSubmit)="enviarHistoria()">
+            
+            
+            <label class="custom-control-label">Ingrese altura del paciente: </label>
+            <br>
+            <input type="number" step="0.01" name="altura" formControlName="altura">
+            <small class="invalid" *ngIf="formGroup.get('altura')?.errors?.min  && formGroup.get('altura')?.touched">Minimo 0,50 m.</small>
+            
+            <br>
+            <label class="custom-control-label">Ingrese peso del paciente: </label>
+            <br>
+            <input type="number" step="0.01" name="peso" formControlName="peso">
+
+            <label class="custom-control-label">Ingrese temperatura del paciente: </label>
+            <br>
+            <input type="number" step="0.01" name="temperatura" formControlName="temperatura">
+
+            <label class="custom-control-label">Ingrese presion del paciente: </label>
+            <br>
+            <input type="number" step="0.01" name="presion" formControlName="presion">
+
+            <label class="custom-control-label">Ingrese especificacion del diagnostico: </label>
+            <br>
+            <input class ="clave" type="text" name="clave" placeholder="Caries..." formControlName="clave">
+            <input class ="valor" type="number" name="valor" placeholder="1..." formControlName="valor">
+            <br>
+            <input class ="clave" type="text" name="clave2" placeholder="Cantidad de pastillas al dia..." formControlName="clave2">
+            <input class ="valor" type="number" name="valor2" placeholder="2..." formControlName="valor2">
+
+            
+            <button type="submit" [disabled]="formGroup.invalid">Enviar</button>
+
+            <!-- <button type="button" class="test" (click)="completarCamposAdmin()">Usuario admin</button>
+                <button type="button" class="test" (click)="completarCamposTest2()">Usuario test 2</button>
+                <button type="button" class="test" (click)="completarCamposTest3()">Usuario test 3</button> -->
+            </form>
+        </div>
+    </div>

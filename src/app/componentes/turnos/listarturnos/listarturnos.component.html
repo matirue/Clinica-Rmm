@@ -1,0 +1,22 @@
+<div class="container marketing" *ngIf="seleccioneMedico">
+    <h3 class="text-center">Selección de turnos:</h3>
+    <br> 
+    <div class="row">
+        <div class="col-lg-2" *ngFor="let turno of listadoTurnos; let i = index" class="botones"> 
+            <p *ngIf="turno.horarios.length != 0" >Turnos disponibles para <b>{{turno.especialidad}}</b>:</p> 
+            <div *ngFor="let hora of turno.horarios">
+                <div *ngIf="hora.disponible == true">
+                    <div>                
+                        <button (click)="seleccionTurno(turno.fecha,hora.hora)" width="100" height="100" class="btn buttonHorarios"> 
+                            <div class="hora">
+                                <strong>{{turno.fecha}}</strong>
+                                <strong> {{hora.hora}}</strong> 
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>      
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,24 @@
+<div class="logueo">    
+  <ul style="width:80%">
+    <div class="scroll-lista">
+      <h3>Inicio Rapido</h3>
+      <!-- <div class="lista mb-3" style="max-width: 540px;" *ngFor="let usuario of usuarios; let i= index">  -->
+        <div class="lista mb-3" *ngFor="let usuario of usuariosFiltrados; let i= index">     
+        <!-- <div class="col-md-4"> --> 
+              <!-- <img class="img" [src]="usuario.fotoPerfil" (click)="loguear(usuario)" class="card-img-top"  alt="...">               -->
+
+              <button class="btn-user" (click)="loguear(usuario)">
+                <img class="btn-img" [src]="usuario.fotoPerfil" alt="Perfil de usuario"> 
+              </button>
+          <!-- </div> -->
+          <!-- <div class="col-md-8"> -->
+            <!-- <div class="card-body"> -->
+              <!-- <p class="card-text">{{usuario.nombre}}, {{usuario.apellido}}. {{usuario.email}}</p> -->
+              <!-- <a class="btn btn-primary" (click)="loguear(usuario)">Loguear</a> -->
+            <!-- </div> -->
+          <!-- </div>  -->
+ 
+      </div>  
+    </div>
+  </ul> 
+</div>

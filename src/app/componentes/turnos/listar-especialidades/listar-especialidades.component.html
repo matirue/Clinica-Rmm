@@ -1,0 +1,25 @@
+<div class="container"> 
+  <br>
+  <h3>Filtrar por especialidad:</h3>
+  <br>
+  <section class="layout">
+    <div *ngFor="let especialidad of especialidades">
+      <a>
+        <button>
+          <img class="bd-placeholder-img rounded-circle" width="100" height="100" src={{especialidad.img}} (click)="enviarEventoEspecialidad(especialidad.nombre)">
+        </button>
+      </a>
+
+      <h4>{{especialidad.nombre}}</h4>
+    </div>
+
+    <div>
+      <a>
+        <button >
+          <img class="bd-placeholder-img rounded-circle" width="100" height="100" src="assets/indent-all.svg" (click)="enviarEventoEspecialidad('todos')">
+        </button>
+      </a>
+      <h4>Mostrar todos</h4>
+      <p></p>
+    </div> 
+  </section> 

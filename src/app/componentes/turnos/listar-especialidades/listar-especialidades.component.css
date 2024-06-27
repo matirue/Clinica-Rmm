@@ -1,0 +1,13 @@
+.container {
+    background-color: antiquewhite;
+
+    .layout {
+        width: 650px;
+        height: 768px;
+      
+        display: grid;
+        grid-template-rows: repeat(auto-fit, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+}

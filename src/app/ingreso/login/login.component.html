@@ -1,0 +1,32 @@
+<app-spinner class="flag" [spinner]="flag"></app-spinner>
+<!-- <div class="row">
+    <div class="col-10"> -->
+        <div *ngIf="!flag" class="login-page">
+            <div class="form">
+                
+                <form class="form-group">
+                    <h1>Iniciar Sesion</h1><br>
+                    
+                    <input type="text" id="email" class="form-control" placeholder="Email" [(ngModel)]="email" name="email">
+                    <input type="password" id="password" class="form-control" placeholder="Contraseña" [(ngModel)]="password" name="password" >
+                    
+                    <button type="submit" (click)="login()">login</button>
+                    
+                    <p class="message">No estás registrado? <a [routerLink]="'/ingreso/registro'">Crear cuenta</a></p> 
+                </form>
+            </div>
+        </div> 
+    <!-- </div>
+
+    <div class="col-2"> -->
+        <div class="cardLogueo">
+            <app-spinner [spinner]="spinnerChico"></app-spinner>
+            <div *ngIf="!spinnerChico">
+                <app-logueorapido [usuarios]="userAux" (eventoLogueoUsuario)="capturarHardcodeo($event)"></app-logueorapido>        
+            </div>    
+        </div>
+    <!-- </div>
+</div> -->
+
+
+

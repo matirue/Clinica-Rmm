@@ -1,0 +1,98 @@
+<div class="container">
+    <button type="button" class="btn btn-warning btn-lg btn-block" [routerLink]="'/ingreso/registro'">Registrar nuevo usuario</button>
+    <div class="botonesAdmin">        
+        <!-- <button type="submit" (click)="exportarExcel()">Exportar todos los usuarios a excel</button> -->
+    </div>
+    <div class="contenedorLista form" >
+
+        <h5>Listado de Especialistas</h5>
+
+        <table class="table table-striped form-group">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dni</th> 
+                    <th>Email</th> 
+                    <th>Especialidad</th>
+                    <th>Estado</th> 
+                    <th>Acción</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuariosEspecialistas;index as i">
+
+                        <td>{{usuario.apellido}}</td>
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.dni}}</td>
+                        <td>{{usuario.email}}</td> 
+                        <td>{{usuario.descripcion}}</td> 
+                        <td *ngIf="!usuario.aprobadoPorAdmin" style="color: brown; font-weight: 700;">Deshabilitado</td> 
+                        <td *ngIf="usuario.aprobadoPorAdmin" style="color: rgb(42, 165, 56); font-weight: 700;">Habilitado</td> 
+                        <td *ngIf="!usuario.aprobadoPorAdmin"> 
+                            <button type="button" class="btn btn-primary" (click)="habilitar(usuario)">
+                                Habilitar
+                            </button>
+                        </td>
+                        <td *ngIf="usuario.aprobadoPorAdmin" (click)="bajaUsuario(usuario)">
+                            <button type="button" class="button-danger">
+                                Baja
+                            </button>
+                        </td> 
+
+                    <!-- </form> -->
+
+
+                    <!-- <button *ngIf="habilitado" (click)="deshabilitar(usuario,i)">{{mensajeBoton}}</button> -->
+                    <!-- <td><button *ngIf="usuario.aprobadoPorAdmin" (click)="deshabilitar(usuario,i)">{{mensajeBoton}}</button></td> -->
+
+                    <!-- <td><button (click)="aprobarUsuario(usuario,i)">Aprobar</button></td> -->
+                    <!-- <td><button type="button" class="btn btn-info  btn-circle" (click)="mostrarDetalles(alumno)"><i class="fa fa-check"></i> -->
+                        <!-- </button></td> -->
+                    </tr>
+
+
+                </tbody>                
+            </table>
+
+            
+                <!-- <div class="list-group">
+                    <h1>Historias clinicas de pacientes</h1>
+                    <app-mostrar-historia
+                    [historia]="historias"
+                    >
+
+                    </app-mostrar-historia>
+                    
+                </div> -->
+        
+            
+    </div>
+
+
+    <div class="contenedorLista form" >
+
+        <h5>Listado de Pacientes</h5>
+
+        <table class="table table-striped form-group">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dni</th> 
+                    <th>Email</th> 
+                    <th>Edad</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let usuario of usuariosPacientes;index as i">
+                        <td>{{usuario.apellido}}</td>
+                        <td>{{usuario.nombre}}</td>
+                        <td>{{usuario.dni}}</td>
+                        <td>{{usuario.email}}</td>  
+                        <td>{{usuario.edad}}</td>  
+                    </tr> 
+                </tbody>                
+            </table>        
+    </div> 
+</div>

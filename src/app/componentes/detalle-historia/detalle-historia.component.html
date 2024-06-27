@@ -1,0 +1,44 @@
+<ul class="list-unstyled mt-3 mb-4">
+    <p>
+        <strong>
+          Altura:
+        </strong>
+        {{hist.altura}}
+      </p>
+    <p>
+    <strong>
+        Peso:
+    </strong>
+    {{hist.peso}}
+    </p>
+    <p>
+    <strong>
+        Temperatura:
+    </strong>
+    {{hist.temperatura}}
+    </p>
+    <p>
+    <strong>
+        Presion:
+    </strong>
+    {{hist.presion}}
+    </p>
+    <p>
+    <strong>
+        {{hist.clave}}:
+    </strong>
+    {{hist.valor}}
+    </p>
+    <p>
+<p>
+    <strong>
+    {{hist.clave2}}:
+    </strong>
+    {{hist.valor2}}
+</p>
+<p>
+    <strong *ngIf="hist.turno.resenia != ''">
+      {{hist.turno.resenia}}:
+    </strong>
+  </p>
+</ul>

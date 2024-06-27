@@ -1,0 +1,43 @@
+img{
+  clip-path: circle(50.4% at 50% 50%);
+  background-color: rgba(145, 145, 145, 0.282);
+  
+}
+
+.contenedor-principal {
+  margin-top: 5%;
+  background: rgb(138,138,138);
+  background: radial-gradient(circle, rgba(138,138,138,0.5592612044817927) 0%, rgba(255,255,255,0) 59%);
+}
+
+
+h1 .title{
+  text-shadow: -14px 9px 8px;
+  color: rgb(237, 59, 59);
+}
+
+.titulo{
+  
+  font-family:'Courier New', Courier, monospace;
+  text-shadow: -1px 3px 3px;
+  color:rgb(220, 44, 44);
+  font-size: 70px;
+  font-weight: 700;
+  padding: 25% 2% 2% 20%;
+}
+
+h4{
+  font-family:'Courier New', Courier, monospace;
+  color:rgb(177, 38, 38);
+  font-size: 35px;
+  font-weight: 900;
+}
+
+.colum01{ 
+  color:rgb(27, 48, 89);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.colum02{
+  padding: 5%;
+}

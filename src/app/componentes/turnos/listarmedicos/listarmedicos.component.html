@@ -1,0 +1,28 @@
+  <div class="album py-5 bg-light">
+    <div class="container"> 
+      <h3>Seleccione un médico:</h3>
+      <br>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3"> 
+        <div class="col" *ngFor="let medico of especialistas; let i = index">
+          <div class="card shadow-sm">
+            <!-- <button [appRoundDiv]='"50%"' appTooltip="Buena calidad de atención" placement="top" delay="500" (click)="seleccionMedico(medico,medico.disponibilidadEsp[0])" style="background: url('{{medico.fotoPerfil}}') no-repeat; background-size: 300px;" class="btn buttonEspecialista btn-redondo appTooltip" ></button> -->
+            <button placement="top" delay="500" (click)="seleccionMedico(medico,medico.disponibilidadEsp[0])" style="background: url('{{medico.fotoPerfil}}') no-repeat; background-size: 300px;" class="btn buttonEspecialista btn-redondo appTooltip" ></button>
+            <div class="card-body">
+              <p class="card-text"><strong>Medico: </strong>{{medico | medico:medico}} </p>
+              <p class="card-text"><b>Especialidad: </b></p>
+              <div *ngFor="let esp of medico.descripcion">
+                  <p class="card-text">{{esp}}</p>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+
+    </div>
+  </div>
