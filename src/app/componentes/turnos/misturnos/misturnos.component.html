@@ -77,7 +77,7 @@
                         <td *ngIf="turno.estado != 'REALIZADO' && turno.estado != 'RECHAZADO' && turno.estado != 'CANCELADO' && turno.estado != 'ACEPTADO'">
                             <button class="btn btn-aceptar" (click)="aceptarTurno(turno)">Aceptar</button>
                         </td>
-                        <td *ngIf="turno.estado != 'ACEPTADO' && turno.estado != 'RECHAZADO' && turno.estado != 'CANCELADO'">
+                        <td *ngIf="turno.estado != 'ACEPTADO' && turno.estado != 'RECHAZADO' && turno.estado != 'REALIZADO' && turno.estado != 'CANCELADO'">
                             <button class="btn btn-cancelar" (click)="cancelarTurno(turno)">Cancelar</button>
                         </td>
                         <td *ngIf="turno.estado != 'ACEPTADO' && turno.estado != 'REALIZADO' && turno.estado != 'RECHAZADO' && turno.estado != 'CANCELADO'">
@@ -131,8 +131,9 @@
                     <p class="mb-1">Especialista: <i>Dr. {{turno.especialista | medico: turno.especialista}}</i></p>
                     <p>Estado: <strong [ngClass]="getEstadoClass(turno.estado)">{{turno.estado}}</strong></p>
                     <small>Paciente: {{turno.paciente.nombre}}, {{turno.paciente.apellido}}</small>
-                    <!-- <td *ngIf="turno.estado != 'ACEPTADO' && turno.estado != 'RECHAZADO' && turno.estado != 'CANCELADO'"><button class="btn btn-primary" (click)="cancelarTurno(turno)">Cancelar turno</button></td> -->
-                        
+                    <td *ngIf="turno.estado != 'ACEPTADO' && turno.estado != 'RECHAZADO' && turno.estado != 'REALIZADO' && turno.estado != 'CANCELADO'">
+                        <button class="btn btn-cancelar" (click)="cancelarTurno(turno)">Cancelar turno</button>
+                    </td>                        
                 </a>
     
             </div>

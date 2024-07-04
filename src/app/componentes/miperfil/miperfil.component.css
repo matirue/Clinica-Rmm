@@ -23,10 +23,141 @@
     .card-title-paciente { 
         color: #4e64ae;
         font-weight: 700;
-    }
+    }  
+
 }
+
+
+.member {
+  position: relative;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  background: #fff;
+  transition: 0.5s;
+  height: 100%;
+  width: 50%;
+}
+
+.member .pic {
+  overflow: hidden;
+  width: 180px;
+  border-radius: 50%;
+}
+
+.member .pic img {
+  transition: ease-in-out 0.3s;
+}
+
+.member:hover {
+  transform: translateY(-10px);
+}
+
+.member .member-info {
+  padding-left: 30px;
+}
+
+.member h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #37517e;
+}
+
+.member span {
+  display: block;
+  font-size: 15px;
+  padding-bottom: 10px;
+  position: relative;
+  font-weight: 500;
+}
+
+.member span::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: #cbd6e9;
+  bottom: 0;
+  left: 0;
+}
+
+.member p {
+  margin: 10px 0 0 0;
+  font-size: 14px;
+} 
+
+
+.member2 {
+  position: relative;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  background: #fff;
+  transition: 0.5s;
+  height: 100%;
+  width: 60%;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.member2 .pic {
+  overflow: hidden;
+  width: 180px;
+  /* height: 180px; */
+  border-radius: 15%;
+}
+
+.member2 .pic img {
+  transition: ease-in-out 0.3s;
+  height: 180px;
+}
+
+.member2:hover {
+  transform: translateY(-10px);
+}
+
+.member2 .member2-info {
+  padding-left: 30px;
+}
+
+.member2 h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #37517e;
+}
+
+.member2 span {
+  display: block;
+  font-size: 15px;
+  padding-bottom: 10px;
+  position: relative;
+  font-weight: 500;
+}
+
+.member2 span::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: #cbd6e9;
+  bottom: 0;
+  left: 0;
+}
+
+.member2 p {
+  margin: 10px 0 0 0;
+  font-size: 14px;
+} 
+
 .container{
     padding: 5% 0 0 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
   

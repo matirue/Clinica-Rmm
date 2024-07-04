@@ -1,12 +1,48 @@
 <div class="container contenedor-principal">
-  <div class="row">
-      <div class="col-sm-5 colum02">  
-        <img src="./../../../favicon.ico" width="100%"> 
+  <!-- sin logueo -->
+  <section id="bienvenido" class="d-flex align-items-center" *ngIf="!usuarioLogueado">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+          <h1>ClinicaRMM</h1>
+          <h2>Somos tus especialistas en salud de confianza</h2>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a [routerLink]="'ingreso/login'" class="btn-get-started scrollto">Iniciar Sesion</a>
+            <a [routerLink]="'ingreso/registro'" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Registrarse</span></a>
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 bienvenido-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="./../../../assets/letra-m.png" class="img-bienvenido animated" alt="">
+        </div>
       </div>
- 
-      <div class="col-sm-7 colum01">
-        <h1 class="titulo" > ClinicaRMM </h1>
-        <h4>  Somos tus especialistas en salud de confianza</h4>  
-      </div> 
-  </div>
+    </div>
+  </section>
+
+  <!-- Usiario Logueado -->
+  <section id="bienvenido" class="d-flex align-items-center" *ngIf="usuarioLogueado">
+    <div class="containerLog">
+      <div class="row">
+        <div class="col-lg-8 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <img src="./../../../assets/letra-m.png" class="img-user-fluid animated" alt="">
+            <div class="d-flex flex-column justify-content-center">
+              <h1 class="h1-user">ClinicaRMM</h1> 
+              <h2 class="h2-user">Sistema de autogestión</h2>
+            </div>
+            
+          </div>         
+        </div>
+        <div class="col-lg-4 order-1 order-lg-2 bienvenido-blockUsers" >
+          
+          <!-- <img src="./../../../assets/letra-m.png" class="img-fluid animated" alt=""> -->
+          <div class="user-card">
+            <img src="{{usuarioLogueado.fotoPerfil}}" alt="Perfil" class="profile-img">
+            <p><strong>Nombre: </strong>{{usuarioLogueado.apellido}}, {{usuarioLogueado.nombre}}</p>
+            <button [routerLink]="'/miperfil'">Ver mi perfil</button>
+          </div> 
+        </div>
+      </div>
+    </div>
+
+  </section> 
 </div>

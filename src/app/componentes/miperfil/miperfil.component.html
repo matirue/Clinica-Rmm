@@ -1,56 +1,37 @@
 <div class="miPerfil">
   <div class="container">  
-    <div class="mi-card">  
-      <div class="row"  *ngIf="usuarioLogueado.paciente"> 
-        <div class="col-sm-8 col-paciente">
-          <div>
-            <img style="width: 60%;" src={{usuarioLogueado.fotoPerfil}}> 
-          </div>
-          <div>  
-            <img style="width: 60%;" src={{usuarioLogueado.fotoPerfilDos}}>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <h2 class="card-title-paciente">Paciente</h2>
-          <p><strong>Nombre: </strong>{{usuarioLogueado.apellido}}, {{usuarioLogueado.nombre}}</p>    
-          <p><strong>Dni: </strong>{{usuarioLogueado.dni}}</p>
-          <p><strong>Edad: </strong>{{usuarioLogueado.edad}}</p>
-          <p><strong>Email: </strong> {{usuarioLogueado.email}}</p>
-          <p><strong>Te uniste el: </strong> {{getFormattedDate(usuarioLogueado.fecha)}}</p>
-        </div>
-      </div> 
-  
-      <div *ngIf="!usuarioLogueado.paciente" class="default-card">
-        <div class="imagen">
-          <img src={{usuarioLogueado.fotoPerfil}}>
-        </div>
-        <div class="info">
-          <h2 *ngIf="usuarioLogueado.admin" class="card-title-admin">Administrador</h2>
-          <h2 *ngIf="usuarioLogueado.especialista" class="card-title-especialista">Especialista</h2>
-          <p><strong>Nombre: </strong>{{usuarioLogueado.apellido}}, {{usuarioLogueado.nombre}}</p>   
-          <p *ngIf="usuarioLogueado.especialista"><strong>Nombre: </strong>Dr. {{usuarioLogueado.apellido}}, {{usuarioLogueado.nombre}}</p>    
-          <p *ngIf="usuarioLogueado.especialista" ><strong>Especialidad: </strong>{{ usuarioLogueado.descripcion }}</p>
-          <p><strong>Dni: </strong>{{usuarioLogueado.dni}}</p>
-          <p><strong>Edad: </strong>{{usuarioLogueado.edad}}</p>
-          <p><strong>Email: </strong> {{usuarioLogueado.email}}</p>
-          <p><strong>Te uniste el: </strong> {{getFormattedDate(usuarioLogueado.fecha)}}</p>
-        </div>
-      </div>
 
-      <!-- Exportador 
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <div *ngIf="usuarioLogueado.admin" class="form">
-                    <button type="submit" (click)="exportarExcel()">Exportar todos los usuarios a excel</button>              
-                  </div>
-                  <div *ngIf="usuarioLogueado.paciente" class="form">
-                    <button type="submit" (click)="exportarPdf()">Exportar todos los turnos a PDF</button>              
-                  </div>
-                </div>
-                
-              </div> -->
-  
-    </div> 
+    <div class="member d-flex align-items-start" *ngIf="!usuarioLogueado.paciente">
+      <div class="pic"><img src={{usuarioLogueado.fotoPerfil}} class="img-fluid" alt=""></div>
+      <div class="member-info">
+        <h4 *ngIf="usuarioLogueado.admin">Admin. {{usuarioLogueado.apellido}}, {{usuarioLogueado.nombre}}</h4>
+        <h4 *ngIf="usuarioLogueado.especialista">Dr. {{usuarioLogueado.apellido}}, {{usuarioLogueado.nombre}}</h4>
+        <span *ngIf="usuarioLogueado.admin">Administrador</span>
+        <span *ngIf="usuarioLogueado.especialista">{{ usuarioLogueado.descripcion }}</span>
+        <p><strong>Dni: </strong>{{usuarioLogueado.dni}}</p>
+        <p><strong>Edad: </strong>{{usuarioLogueado.edad}}</p>
+        <p><strong>Email: </strong> {{usuarioLogueado.email}}</p>
+        <p><strong>Te uniste el: </strong> {{getFormattedDate(usuarioLogueado.fecha)}}</p> 
+      </div>
+    </div>
+
+    <div class="member2 d-flex align-items-start" *ngIf="usuarioLogueado.paciente">
+      <div class="pic">
+        <img src={{usuarioLogueado.fotoPerfil}} class="img-fluid" alt=""> 
+      </div>
+      <div class="member-info">
+        <h4>{{usuarioLogueado.apellido}}, {{usuarioLogueado.nombre}}</h4> 
+        <span>Paciente</span> 
+        <p><strong>Dni: </strong>{{usuarioLogueado.dni}}</p>
+        <p><strong>Edad: </strong>{{usuarioLogueado.edad}}</p>
+        <p><strong>Email: </strong> {{usuarioLogueado.email}}</p>
+        <p><strong>Te uniste el: </strong> {{getFormattedDate(usuarioLogueado.fecha)}}</p> 
+      </div>
+      <div class="pic"> 
+        <img src={{usuarioLogueado.fotoPerfilDos}} class="img-fluid" alt="">
+      </div>
+    </div>
+
   </div>
 
   <div *ngIf="usuarioLogueado.paciente && !flag && !usuarioLogueado.admin ">
