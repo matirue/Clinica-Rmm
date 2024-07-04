@@ -63,6 +63,7 @@ export class MiperfilComponent implements OnInit {
   maxSliderHora: number = 18;
   turnoAux: Turnoesp;
   historia: Historia[]=[];
+  turnosHistorias: Turnos[] = [];
   flag: boolean = false;
   seleccioneDia: boolean = false;
   seleccioneHora: boolean = false;
@@ -243,6 +244,12 @@ export class MiperfilComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.fireSvc.getAllTurnos().subscribe(auxTurnosHistorias => {
+      this.turnosHistorias = auxTurnosHistorias;
+      this.flag = false;
+      // console.log("TURNOS history>>>",this.turnosHistorias);      
+    })
+
     this.usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));
     // console.log(this.usuarioLogueado)
     this.agregarChartTurnosPorDia();
@@ -264,13 +271,20 @@ export class MiperfilComponent implements OnInit {
         }
       });
 
+      console.log(this.historia);
+
 
     });
+    console.log(">>");
+    console.log(this.historia);
+
     this.fireSvc.getAllTurnos().pipe(first())
     .toPromise()
     .then(turnos=>{
       this.arrayExcelTurno = <any>turnos;
     });
+
+
     this.fireSvc.getAllEstados().pipe(first())
     .toPromise()
     .then(estados=>{
@@ -292,6 +306,8 @@ export class MiperfilComponent implements OnInit {
     .then(logs=>{
       this.logs = logs;
     })
+
+
     this.fireSvc.getAllUsers().pipe(first())
     .toPromise()
     .then(users=>{
@@ -303,10 +319,10 @@ export class MiperfilComponent implements OnInit {
 
     if(this.usuarioLogueado.paciente){
       this.flag = true;
-
     }
-    if(this.usuarioLogueado.especialista){
 
+
+    if(this.usuarioLogueado.especialista){
       // console.log(this.usuarioLogueado);
       if(this.usuarioLogueado.disponibilidadEsp != undefined){
         this.usuarioLogueado.disponibilidadEsp.forEach(esp=>{
@@ -316,25 +332,16 @@ export class MiperfilComponent implements OnInit {
           // console.log(esp);
           this.disp.push(JSON.parse(JSON.stringify(esp)));
           // console.log(this.disp);
-
         })
-
       }
     }
-
-
   }
   
   
   capturarHora(e){
-
-
-
       this.horariosAElegir.forEach(element => {
         if(e.target.checked){
             if(element.hora == e.target.value){
-
-
               this.arrayHorarios.push(element);
             }
         }
@@ -343,7 +350,6 @@ export class MiperfilComponent implements OnInit {
             let i = this.arrayHorarios.indexOf( element)
             this.arrayHorarios.splice(i,1);
             console.log(this.arrayHorarios);
-
           }
         }
       });
@@ -377,7 +383,6 @@ export class MiperfilComponent implements OnInit {
           auxArr.push(horarios);
       }
       else{
-
         aux += 0.50;
         if(aux % 1 == 0){
           auxStr = aux.toString()

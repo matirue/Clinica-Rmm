@@ -291,10 +291,10 @@ export class MisturnosComponent implements OnInit {
       }
     });
   }
+  
   cargarHistoriaClinica(turno: Turnos){
     // console.log("hola")
     this.mostrarHistoria = true;
     this.turnoSeleccionado = turno;
   }
-
 }

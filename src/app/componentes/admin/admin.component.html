@@ -1,8 +1,13 @@
 <div class="container">
-    <button type="button" class="btn btn-warning btn-lg btn-block" [routerLink]="'/ingreso/registro'">Registrar nuevo usuario</button>
-    <div class="botonesAdmin">        
-        <!-- <button type="submit" (click)="exportarExcel()">Exportar todos los usuarios a excel</button> -->
+    <div class="container-button"> 
+            <button type="button" class="btn btn-warning btn-lg btn-block" [routerLink]="'/ingreso/registro'">Registrar nuevo usuario</button>
+         
+            <button type="button" class="btn btn-warning btn-lg btn-block" (click)="exportarExcel()">Exportar usuarios en excel</button>
     </div>
+    <br>
+    <!-- <div class="botonesAdmin">        
+        <button type="submit" (click)="exportarExcel()">Exportar todos los usuarios a excel</button>
+    </div> -->
     <div class="contenedorLista form" >
 
         <h5>Listado de Especialistas</h5>
@@ -50,25 +55,9 @@
                     <!-- <td><button type="button" class="btn btn-info  btn-circle" (click)="mostrarDetalles(alumno)"><i class="fa fa-check"></i> -->
                         <!-- </button></td> -->
                     </tr>
-
-
                 </tbody>                
-            </table>
-
-            
-                <!-- <div class="list-group">
-                    <h1>Historias clinicas de pacientes</h1>
-                    <app-mostrar-historia
-                    [historia]="historias"
-                    >
-
-                    </app-mostrar-historia>
-                    
-                </div> -->
-        
-            
+            </table>          
     </div>
-
 
     <div class="contenedorLista form" >
 
@@ -94,5 +83,17 @@
                     </tr> 
                 </tbody>                
             </table>        
-    </div> 
+    </div>  
+
+    <div class="container-button"> 
+        <button type="submit" class="btn btn-warning btn-lg btn-block"  *ngIf="!this.mostrarHistoriales" (click)="mostrarHistorial()">Historiales Clinicos de Pacientes</button>
+        <button type="submit" class="btn btn-danger btn-lg btn-block"  *ngIf="this.mostrarHistoriales" (click)="ocultar()">Ocultar Historiales</button>
+    </div>
+
+    <br>
+
+    <div class="list-group conteinerHistorial" *ngIf="this.mostrarHistoriales">
+        <h1 style="color:rgb(0, 0, 0);">Historiales Clinicos de Pacientes</h1>
+        <app-mostrar-historia [historia]="turnosHistorias"></app-mostrar-historia>
+    </div>  
 </div>

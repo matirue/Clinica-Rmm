@@ -102,6 +102,18 @@
   justify-content: space-between;
 }
 
+.container-historiaClinica{
+  margin: 100px 90px;
+  background-color: rgba(1, 136, 1, 0.315);
+  border-radius: 3%;
+  padding: 5%;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+  h1 {
+    font-weight: 700;
+  }
+}
+
 .member2 .pic {
   overflow: hidden;
   width: 180px;

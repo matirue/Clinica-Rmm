@@ -49,14 +49,55 @@
     margin-top: -25%;
   
   }
+  
+  .container-form{
+    display: flex;
+    justify-content: space-around;
+
+    padding-top: 5%;
+  }
+
   .historia-clinica {
     width: 80%;
     /* height: auto; */
-    padding: 10% 0 0;
-    margin: auto;
+    padding: 5% 0;
+    margin: 5% 10%;
     animation-name: loginRegister;
     animation-duration: 0.2s;
+    background-color: #c5ffbe61;
+    border-radius: 5%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     
+  }
+ 
+  .persona {
+    position: relative;
+    z-index: 1;
+
+    .info{
+      background: #FFFFFF;      
+      border-radius: 3%;
+      padding: 45px; 
+      display: grid;
+      justify-content: center;
+      align-items: center;
+      justify-items: center;
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+
+      .pic {
+        overflow: hidden;
+        width: 200px;
+        max-width: 300px;
+        border-radius: 10%;
+      }
+      
+      .pic img {
+        transition: ease-in-out 0.3s;
+      }
+
+    }
+
   }
   @keyframes loginRegister {
     0% {
@@ -73,8 +114,7 @@
     position: relative;
     z-index: 1;
     background: #FFFFFF;
-    
-    margin: 0 auto 100px;
+    border-radius: 5%;
     padding: 45px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);

@@ -11,6 +11,9 @@ import { Historia } from 'src/app/clases/historia';
 import { ExportExcelService } from 'src/app/services/export-excel.service';
 import jsPDF from 'jspdf';
 import * as html2canvas from "html2canvas";
+import { first } from 'rxjs/operators';
+import { EstadoTurno } from 'src/app/clases/estado-turno';
+import { Turnos } from 'src/app/clases/turnos';
 
 @Component({
   selector: 'app-admin',
@@ -21,6 +24,7 @@ export class AdminComponent implements OnInit {
   usuariosAAprobar: User[];
   usuariosEspecialistas: User[];
   usuariosPacientes: User[];
+  usuariosTotal: User[];
   spinnerPrueba: boolean = true;
   habilitado: boolean;
   mostrarListado: boolean = false;
@@ -31,8 +35,14 @@ export class AdminComponent implements OnInit {
   mostrarBaja:boolean = false;
   bajaUser:BajaUsuario = new BajaUsuario();
   historias: Historia[] = [];
+  turnosHistorias: Turnos[] = [];
   flag:boolean = false;
-  // arrayExcelUsuario =  [];
+  arrayExcelUsuario =  [];
+  estados:EstadoTurno[] = [];
+  estadosAdmin:EstadoTurno[] = [];
+
+
+  
   constructor(
     private authSvc: AuthService,
     private fireSvc: FirebaseService,
@@ -44,8 +54,19 @@ export class AdminComponent implements OnInit {
     this.usuariosAAprobar = [];
     this.usuariosEspecialistas = [];
     this.usuariosPacientes = [];
+    this.usuariosTotal = [];
+
+    this.mostrarHistoriales = false;
   }
   public formGroupCheck!: FormGroup;
+
+  mostrarHistoriales: boolean = false;
+  mostrarHistorial(){
+    this.mostrarHistoriales = true;
+  }
+  ocultar(){
+    this.mostrarHistoriales = false;
+  }
 
 
 
@@ -56,19 +77,20 @@ export class AdminComponent implements OnInit {
 
       this.historias = historias;
       this.flag = false;
-      console.log(this.historias);
+      // console.log(this.historias);
     })
 
 
     this.fireSvc.getAllUsers().subscribe((usuarios)=>{
 
-      // this.arrayExcelUsuario = <any>usuarios;
+      this.arrayExcelUsuario = <any>usuarios;
 
       this.usuariosEspecialistas = [];
+
       usuarios.forEach(usuario => {
-        console.log(">>" + usuario);
+        // console.log(">>" + usuario);
         // this.spinner = false;
-        
+        this.usuariosTotal.push(JSON.parse(JSON.stringify(usuario)));
         this.mensaje = 'Listado de especialistas pendientes de aprobación';
         if(usuario.especialista){
           this.usuariosEspecialistas.push(JSON.parse(JSON.stringify(usuario)));
@@ -102,6 +124,29 @@ export class AdminComponent implements OnInit {
         }
       });
     });
+
+    this.fireSvc.getAllEstados().pipe(first())
+    .toPromise()
+    .then(estados=>{
+      this.estadosAdmin = estados;
+      estados.forEach(estado => {
+        this.estados.push(JSON.parse(JSON.stringify(estado)));
+        // if(this.usuarioLogueado.uid === estado.paciente.uid){
+        //   if(estado.estado == Estados.REALIZADO){
+        //     this.estados.push(JSON.parse(JSON.stringify(estado)));
+        //     // console.log(this.estados)
+        //   }
+
+        // }
+      });
+      // console.log(this.estados)
+    });
+
+    this.fireSvc.getAllTurnos().subscribe(auxTurnosHistorias => {
+      this.turnosHistorias = auxTurnosHistorias;
+      this.flag = false;
+      // console.log("TURNOS history>>>",this.turnosHistorias);      
+    })
 
     this.formGroupCheck = this.fb.group({
       'check': ['',[Validators.required]]});
@@ -159,7 +204,7 @@ export class AdminComponent implements OnInit {
     for (let i = 0; i < this.usuariosEspecialistas.length; i++) {
       if(this.usuariosEspecialistas[i] == usuario){
         this.alertas.mostraAlertaInput('Baja de usuario','Ingrese motivo de la baja').then(texto=>{
-          console.log(texto);
+          // console.log(texto);
           this.usuariosEspecialistas[i].aprobadoPorAdmin = false;
           this.usuariosEspecialistas[i].baja = true;
           this.bajaUser.usuario = this.usuariosEspecialistas[i];
@@ -172,27 +217,47 @@ export class AdminComponent implements OnInit {
       
     }
   }
-  // exportarExcel(){
-  //   let reportData = {
-  //     title: 'Listado de usuarios de clinica online',
-  //     data: this.arrayExcelUsuario,
-  //     headers: [
-  //       'nombre',
-  //       'apellido',
-  //       'baja',
-  //       'dni',
-  //       'edad',
-  //       'email',
-  //       'fecha',
-  //       'fotoPerfil',
-  //       'fotoPerfilDos',
-  //       'especialista',
-  //       'uid'
-  //     ]
-  //   }
+  exportarExcel(){ 
+    // console.log(">>");
+    // console.log(this.usuariosTotal);
+    let reportData = {
+      title: 'Listado de usuarios de ClinicaRMM',
+      data: this.estadosAdmin,
+      headers: [
+        'Especialidad',
+        'Reseña',
+        'Nombre medico',
+        'Apellido medico',
+        'Email de medico',
+        'Dni de medico',
+        'Edad de medico',
+        'Fecha de atencion',
+        'Hora de atencion',
+        'Estado de atencion',
+        'Nombre Paciente',
+        'Apellido Paciente',
+        'Dni paciente',
+        'Edad paciente',
+      ]
+    }
 
-  //   this.excel.exportExcel(reportData);
-  // }
+    let reportData2 = {
+      title: 'Listado de usuarios de ClinicaRMM',
+      data: this.usuariosTotal,
+      headers: [
+        'Nombre',
+        'Apellido',
+        'Email',
+        'Dni',
+        'Edad',
+        'Especialidad',
+      ]
+    }
+    // this.excel.exportExcel(reportData);
+    this.excel.exportExcel2(reportData2);
+  }
+
+
   pruebaExport(){
     
   }

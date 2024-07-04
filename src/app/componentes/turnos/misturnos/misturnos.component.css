@@ -201,6 +201,25 @@ table{
   background: #a8a8a8;
 }
 
+.btn-historial {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: rgb(172, 164, 2);
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn-historial:hover, .btn-historial:active, .btn-historial:focus {
+  background: #796d00;
+}
+
 button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;

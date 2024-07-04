@@ -34,24 +34,24 @@ export class HistoriaClinicaComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private router:Router
     ) {
-    console.log("hola")
+    // console.log("hola")
    }
 
   ngOnInit(): void {
+    // console.log(this.turnoSeleccionado.paciente.apellido);
     
-    
-  this.formGroup = this.fb.group({
-      'altura': ['',[Validators.required,Validators.min(0.50)]],
-      'peso': ['',Validators.required],
-      'temperatura': ['',Validators.required],
-      'presion': ['',Validators.required],
-      'clave': ['',Validators.required],
-      'valor': ['',Validators.required],
-      'clave2': ['',Validators.required],
-      'valor2': ['',Validators.required],
-      
-    });
-    console.log("hola")
+    this.formGroup = this.fb.group({
+        'altura': ['',[Validators.required,Validators.min(0.50)]],
+        'peso': ['',Validators.required],
+        'temperatura': ['',Validators.required],
+        'presion': ['',Validators.required],
+        'clave': ['',Validators.required],
+        'valor': ['',Validators.required],
+        'clave2': ['',Validators.required],
+        'valor2': ['',Validators.required],
+        
+      });
+      // console.log("hola")
 
   }
   enviarHistoria(){
@@ -64,8 +64,7 @@ export class HistoriaClinicaComponent implements OnInit {
     
 
     this.fire.addHistoria(historia).then(a=>{
-      console.log(a);
-      
+      // console.log(a);      
       this.fire.updateHistorias(historia);
       this.spinner.hide();
       this.router.navigate(['']);
