@@ -20,6 +20,7 @@ También contamos con un sector dentro de la clínica que se encarga de la organ
 ## Primeros pasos en la clinica
 
 En primer lugar te encontraras con una pagina de bienvenida donde se encuentra el logo de la clinica y un saludo. En la parte superior se observa dos opciones: un Inicio de sesion y un Registro donde podras registrar.
+<img src="/src/assets/img/imagen-bienvenido.png" >
 
 ## :sunglasses: Administracion (Admin) :sunglasses:
 
@@ -65,9 +66,17 @@ Sólo aqui se podra registrar usuarios de tipo Administrador
 
 ## 	:woman_health_worker: Especialista :man_health_worker:
 
+### Mi Perfil
+
+Verás la informacion de usuario del Especialista y podra asignar disponibilidad horaria y de turnos
+
+<img src="/src/assets/img/Imagen-perfil-medico .png" >
+
 ### Mis Turnos
 
 Verás los turnos que tienes o tenías disponible
+
+<img src="/src/assets/img/misTurnos-medico.png" >
 
 ### Pacientes 
 
@@ -85,7 +94,9 @@ Verás los turnos que tienes o tenías disponible
 
 ### Añadir Turno
 
-Podrás generar un nuevo turno
+Podrás Solicitar un nuevo turno
+
+<img src="/src/assets/img/solicitarTurno-paciente.png" >
 
 ### Comentarios
 
