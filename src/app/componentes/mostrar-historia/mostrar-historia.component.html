@@ -28,9 +28,10 @@
             <p><strong>Presion: </strong>{{auxhistoria.historia.presion}}</p>
 
             <strong>Diagnostico:</strong>
-              <p>Observacion: {{auxhistoria.historia.clave}} ({{auxhistoria.historia.valor}}) </p>
+            <p>Observacion: {{auxhistoria.historia.clave}} ({{auxhistoria.historia.valor}}) </p>
 
-              <p>Medicacion: {{auxhistoria.historia.clave2}}: {{auxhistoria.historia.valor2}}</p>
+            <p>Medicacion: {{auxhistoria.historia.clave2}}: {{auxhistoria.historia.valor2}}</p>
+            
             <div *ngIf="auxhistoria.resenia != ''">
               <strong>Reseña:</strong> {{auxhistoria.resenia}}
             </div>
