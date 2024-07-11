@@ -10,5 +10,7 @@ export class Historia {
     valor:number
     clave2: string;
     valor2:number;
+    clave3: string;
+    valor3:number;
     turno: Turnos;
 }

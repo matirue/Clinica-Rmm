@@ -113,8 +113,15 @@
     font-weight: 700;
   }
 }
-.contenedorLogs {
+
+.containerButtonsMostrar{
   margin: 100px 90px;
+}
+
+
+
+.contenedorLogs {
+  margin: 50px 90px;
   padding: 3% 5%;
 
   background-color: #ffffff;

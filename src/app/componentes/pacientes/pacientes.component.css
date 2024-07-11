@@ -1,0 +1,11 @@
+.pacientes {
+    margin: 5% 10%;
+    padding: 30px;
+    background-color: #4397a081;
+    border-radius: 30px;
+
+    h2 {
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+}

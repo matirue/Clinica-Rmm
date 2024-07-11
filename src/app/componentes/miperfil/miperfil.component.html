@@ -34,6 +34,43 @@
     </div>
   </div>
 
+  <div class="containerButtonsMostrar" *ngIf="usuarioLogueado.admin">
+
+    <div class="row">
+      <div class="col-4"> 
+        <button type="submit" *ngIf="!this.mostrarLogs" class="btn btn-lg btn-warning" style="width: 100%;" (click)="verLogs()">Logs Ususarios</button>
+        <button type="submit" *ngIf="this.mostrarLogs" class="btn btn-lg btn-danger" style="width: 100%;" (click)="ocultarLogs()">Ocultar Logs Usuarios</button>
+      </div>
+        
+      <div class="col-4"> 
+        <button  type="submit" *ngIf="!this.mostrarGrafEspecialidad"class="btn btn-lg btn-warning" style="width: 100%;" (click)="vergrafPorEspec()">Grafico turnos por especialidad</button>
+        <button type="submit" *ngIf="this.mostrarGrafEspecialidad" class="btn btn-lg btn-danger" style="width: 100%;" (click)="ocultarGrafPorEspec()">Ocultar turnos por especialidad</button>
+      </div>
+        
+      <div class="col-4"> 
+        <button  type="submit" *ngIf="!this.mostrarGrafDia" class="btn btn-lg btn-warning" style="width: 100%;" (click)="vergrafPorDia()">Grafico turnos por día</button> 
+        <button type="submit" *ngIf="this.mostrarGrafDia" class="btn btn-lg btn-danger" style="width: 100%;" (click)="ocultarGrafPorDia()">Ocultar turnos por día</button>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-2"></div>
+
+      <div class="col-4">
+        <button  type="submit" *ngIf="!this.mostrarGrafSolicitado"class="btn btn-lg btn-warning" style="width: 100%;" (click)="verGrafSolicitado()">Grafico turnos SOLICITADOS por medico</button>
+        <button type="submit" *ngIf="this.mostrarGrafSolicitado" class="btn btn-lg btn-danger" style="width: 100%;" (click)="ocultarGrafSolicitado()">Ocultar turnos SOLICITADOS por medico</button>
+      </div>
+      <div class="col-4">
+        <button  type="submit" *ngIf="!this.mostrarGraRealizado"class="btn btn-lg btn-warning" style="width: 100%;" (click)="verGrafRealizado()">Grafico turnos REALZADOS por medico</button>
+        <button type="submit" *ngIf="this.mostrarGraRealizado" class="btn btn-lg btn-danger" style="width: 100%;" (click)="ocultarGrafRealizado()">Ocultar turnos REALZADOS por medico</button>
+      </div>
+
+      <div class="col-2"></div>
+    </div>
+      
+    
+  </div>
+
   <!-- PARAMETROS DEL MEDICO -->
   <div *ngIf="usuarioLogueado.especialista" style="margin: 20px 90px;">    
     <div class="row row-cols-1 row-cols-sm-1 mb-3 text-center cardHistoria">
@@ -92,7 +129,7 @@
   
   
   <!-- Logs de usuarios -->
-  <div id="chart0" *ngIf="usuarioLogueado.admin" class="contenedorLogs">
+  <div id="chart0" *ngIf="usuarioLogueado.admin && this.mostrarLogs" class="contenedorLogs">
     <h2 class="text-center">Logs de usuarios</h2>
     <div class="form" *ngIf="usuarioLogueado.admin">
       <button class="buttonLogs" type="submit" (click)="descargarLogsAPDF()">
@@ -128,7 +165,8 @@
 <!-- ARREGLAR -->
 <div class="container-chart0" id="charts" *ngIf="usuarioLogueado.admin">
   
-  <div class="container-chart2">
+  <!-- cant. turno x esp -->
+  <div class="container-chart2" *ngIf="this.mostrarGrafEspecialidad">
     <div id="chart2" [chart]="chartEspPorTurno"></div>
     <div class="form">
     <button class="buttonChart1" type="submit" (click)="descargarCantEspPorTurno()">
@@ -139,7 +177,8 @@
 
   <br>
 
-  <div class="container-chart1">
+  <!-- cant. turnos x dia -->
+  <div class="container-chart1" *ngIf="this.mostrarGrafDia">
     <div id="chart1" [chart]="chartCantPorDia"></div>
     <div  id="chart1Aux"></div>
     <div class="form">
@@ -151,9 +190,10 @@
   
   <br>
 
-  <div class="container-chart3">
+  <!-- turnos SOLICITADOS -->
+  <div class="container-chart3" *ngIf="this.mostrarGrafSolicitado">
     <div >
-      <h2>Seleccione la fecha para filtrar la cantidad de turnos solicitados por medico</h2>
+      <h2>Seleccione la fecha para filtrar la cantidad de turnos SOLICITADOS por medico</h2>
       <input (change)="chartTurnosPorMedicoFecha()" [(ngModel)]="fechaSeleccionadaPicker" id="date" type="date">
       
     </div>
@@ -167,9 +207,10 @@
 
   <br>
 
-  <div class="container-chart4">
+  <!-- turnos REALIZADOS -->
+  <div class="container-chart4" *ngIf="this.mostrarGraRealizado">
     <div >
-      <h2>Seleccione la fecha para filtrar la cantidad de turnos realizados por medico</h2>
+      <h2>Seleccione la fecha para filtrar la cantidad de turnos REALZADOS por medico</h2>
       <input (change)="chartTurnosPorMedicoFechaFinalizado()" [(ngModel)]="fechaSeleccionadaPickerRealizado" id="date" type="date">
       
     </div>

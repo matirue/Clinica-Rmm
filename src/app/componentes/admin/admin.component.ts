@@ -143,7 +143,8 @@ export class AdminComponent implements OnInit {
     });
 
     this.fireSvc.getAllTurnos().subscribe(auxTurnosHistorias => {
-      this.turnosHistorias = auxTurnosHistorias;
+      // this.turnosHistorias = auxTurnosHistorias;
+      this.turnosHistorias = auxTurnosHistorias.filter(turno => turno.historia != null); 
       this.flag = false;
       // console.log("TURNOS history>>>",this.turnosHistorias);      
     })

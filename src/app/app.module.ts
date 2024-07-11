@@ -48,7 +48,8 @@ import { RouterModule } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
 import { PacienteAdminGuardGuard } from './guards/paciente-admin-guard.guard';
 import { ChartModule } from 'angular-highcharts';
-import { DatepipePipe } from './pipes/datepipe.pipe'; 
+import { DatepipePipe } from './pipes/datepipe.pipe';
+import { PacientesComponent } from './componentes/pacientes/pacientes.component'; 
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { DatepipePipe } from './pipes/datepipe.pipe';
     RoundDivDirective,
     MedicoPipe,
     DatepipePipe,
+    PacientesComponent,
   ],
   imports: [
     BrowserModule,

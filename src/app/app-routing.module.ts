@@ -8,6 +8,7 @@ import { MiperfilComponent } from './componentes/miperfil/miperfil.component';
 import { MostrarturnosComponent } from './componentes/turnos/mostrarturnos/mostrarturnos.component';
 import { PacienteAdminGuardGuard } from './guards/paciente-admin-guard.guard';
 import { MisturnosComponent } from './componentes/turnos/misturnos/misturnos.component';
+import { PacientesComponent } from './componentes/pacientes/pacientes.component';
 
 const routes: Routes = [
   { path: '', component: BienvenidoComponent },
@@ -15,11 +16,11 @@ const routes: Routes = [
   { path: 'miperfil', component: MiperfilComponent, },
   { path: 'mostrarturnos', component: MostrarturnosComponent, canActivate:[AdminGuard]},
   { path: 'misturnos', component: MisturnosComponent},
-  
+  { path: 'pacientes', component: PacientesComponent},
   { path: 'solicitarTurno', component: AltaTurnoComponent,canActivate: [PacienteAdminGuardGuard]  },
   { path: 'ingreso', loadChildren: () => import('./ingreso/ingreso.module').then(m => m.IngresoModule),},
   { path: 'navbar', loadChildren: () => import('./navbar/navbar.module').then(m => m.NavbarModule),  },
-  { path: 'spinner', loadChildren: () => import('./componentes/spinner/spinner.module').then(m => m.SpinnerModule), },
+  { path: 'spinner', loadChildren: () => import('./componentes/spinner/spinner.module').then(m => m.SpinnerModule), }, 
 ];
 
 @NgModule({

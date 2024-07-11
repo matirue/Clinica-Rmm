@@ -100,9 +100,26 @@ export class AlertasService {
     
     return text;
   }
-  mostrarAlertaHistoria(hist: Historia){
-  
-    let historiaHtml= "<ul class='list-unstyled mt-3 mb-4'><p><strong>Altura:</strong> " + hist.altura+"</p><p><strong>Peso:</strong> " + hist.peso+"</p><p><strong>Temperatura:</strong> "+ hist.altura+"</p><p><strong>Presion:</strong> " + hist.presion+"</p><p><strong> " + hist.clave+":</strong> " + hist.valor+"</p><p><p><strong> " + hist.clave2+":</strong> " + hist.valor2+"</p></ul>";
+  mostrarAlertaHistoria(hist: any){
+    // console.log("esta hist>>");
+    // console.log(hist); 
+
+    let historiaHtml= `<ul class='list-unstyled mt-3 mb-4'>
+                      <p><strong>Altura:</strong> ${hist.historia.altura}</p>
+                      <p><strong>Peso:</strong> ${hist.historia.peso}</p>
+                      <p><strong>Temperatura:</strong> ${hist.historia.temperatura}</p>
+                      <p><strong>Presion:</strong> ${hist.historia.presion}</p>
+                      <p><strong>${hist.historia.clave}:</strong> ${hist.historia.valor}</p>`;
+    
+    if (hist.clave2 !== undefined && hist.valor2 !== undefined) {
+      historiaHtml += `<p><strong>${hist.clave2}:</strong> ${hist.valor2}</p>`;
+    }
+                    
+    if (hist.clave3 !== undefined && hist.valor3 !== undefined) {
+        historiaHtml += `<p><strong>${hist.clave3}:</strong> ${hist.valor3}</p>`;
+    }
+                    
+    historiaHtml += `</ul>`;
 
     Swal.fire({
       title: '<strong>Historia clinica</strong>',
@@ -111,7 +128,7 @@ export class AlertasService {
       showCloseButton: true,
       focusConfirm: false,
       confirmButtonText:
-        '<i class="fa fa-thumbs-up"></i> Ok',
+        '<i class="fa fa-thumbs-up"></i> Cerrar',
       confirmButtonAriaLabel: 'Thumbs up, great!',
       cancelButtonAriaLabel: 'Thumbs down'
     })

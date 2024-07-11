@@ -8,11 +8,17 @@ button {
     padding: 15px;
     color: #FFFFFF;
     font-size: 14px;
+    font-weight: 700;
     -webkit-transition: all 0.3 ease;
     transition: all 0.3 ease;
     cursor: pointer;
     border-radius: 5px;
   }
-  button:hover, button:active, button:focus {
-    background: #43A047;
-  }
+button:hover, button:active, button:focus {
+  background: #43A047;
+}
+
+.busqueda{
+  margin-top: 2%;
+  margin-bottom: 2%;
+}

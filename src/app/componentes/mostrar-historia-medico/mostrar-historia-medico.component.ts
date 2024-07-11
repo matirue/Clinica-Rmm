@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Historia } from 'src/app/clases/historia';
+import { User } from 'src/app/clases/user';
 import { AlertasService } from 'src/app/services/alertas.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-mostrar-historia-medico',
@@ -9,12 +11,23 @@ import { AlertasService } from 'src/app/services/alertas.service';
 })
 export class MostrarHistoriaMedicoComponent implements OnInit {
 
-  constructor(
-    private alerta: AlertasService
-  ) { }
   @Input()historia = [];
+  usuarioLogueado: User = new User();
+  textoABuscar: string = '';
+
+  constructor(
+    private alerta: AlertasService,
+    private authSvc: AuthService,
+  ) { }
+  
   ngOnInit(): void {
     console.log(this.historia);
+
+    this.authSvc.afAuth.authState.subscribe(res=>{
+      this.usuarioLogueado = JSON.parse(localStorage.getItem('usuarioLogueado'));      
+      // console.log("us>>>");      
+      // console.log(this.usuarioLogueado); 
+    });
   }
   verHistoria(historia: Historia){
     this.alerta.mostrarAlertaHistoria(historia);

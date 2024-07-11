@@ -1,5 +1,15 @@
+<div class="busqueda" role="main">
+  <div class="card">
+    <div class="form-group">
+      <label for="search-text">Filtro</label>
+      <input type="email" class="form-control" id="search-text" aria-describedby="search-text" 
+        [(ngModel)]="textoABuscar" placeholder="Ingrese una palabra clave..." 
+        autofocus>
+    </div>              
+  </div>
+</div>
 <div class="row row-cols-1 row-cols-md-3 mb-3 text-center cardHistoria">
-  <div *ngFor="let auxhistoria of historia  ">
+  <div *ngFor="let auxhistoria of historia | appFilter: textoABuscar; let i = index  ">
     <div *ngIf="auxhistoria.historia != null ">
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-header py-3">

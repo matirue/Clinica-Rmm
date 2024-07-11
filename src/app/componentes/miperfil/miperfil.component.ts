@@ -250,7 +250,8 @@ export class MiperfilComponent implements OnInit {
   ngOnInit(): void {
 
     this.fireSvc.getAllTurnos().subscribe(auxTurnosHistorias => {
-      this.turnosHistorias = auxTurnosHistorias;
+      this.turnosHistorias = auxTurnosHistorias.filter(turno => turno.paciente.dni === this.usuarioLogueado.dni && turno.historia != null); 
+      // this.turnosHistorias = auxTurnosHistorias;
       this.flag = false;
       // console.log("TURNOS history>>>",this.turnosHistorias);      
     })
@@ -341,6 +342,88 @@ export class MiperfilComponent implements OnInit {
         })
       }
     }
+  }
+
+  //admin
+  mostrarLogs: boolean = false;
+  mostrarGrafEspecialidad: boolean = false;
+  mostrarGrafDia: boolean = false;
+  mostrarGrafSolicitado: boolean = false;
+  mostrarGraRealizado: boolean = false;
+
+  verLogs(){
+    this.mostrarLogs = true;
+    this.mostrarGrafEspecialidad = false;
+    this.mostrarGrafDia = false;
+    this.mostrarGrafSolicitado = false;
+    this.mostrarGraRealizado = false;
+  }
+  ocultarLogs(){
+    this.mostrarLogs = false;    
+    this.mostrarGrafEspecialidad = false;
+    this.mostrarGrafDia = false;
+    this.mostrarGrafSolicitado = false;
+    this.mostrarGraRealizado = false;
+  }
+
+  vergrafPorEspec(){
+    this.mostrarLogs = false;    
+    this.mostrarGrafEspecialidad = true;
+    this.mostrarGrafDia = false;
+    this.mostrarGrafSolicitado = false;
+    this.mostrarGraRealizado = false;
+  }
+  ocultarGrafPorEspec(){
+    this.mostrarLogs = false;    
+    this.mostrarGrafEspecialidad = false;
+    this.mostrarGrafDia = false;
+    this.mostrarGrafSolicitado = false;
+    this.mostrarGraRealizado = false;
+  }
+
+  vergrafPorDia(){
+    this.mostrarLogs = false;    
+    this.mostrarGrafEspecialidad = false;
+    this.mostrarGrafDia = true;
+    this.mostrarGrafSolicitado = false;
+    this.mostrarGraRealizado = false;
+  }
+  ocultarGrafPorDia(){
+    this.mostrarLogs = false;    
+    this.mostrarGrafEspecialidad = false;
+    this.mostrarGrafDia = false;
+    this.mostrarGrafSolicitado = false;
+    this.mostrarGraRealizado = false;
+  }
+
+  verGrafSolicitado(){
+    this.mostrarLogs = false;    
+    this.mostrarGrafEspecialidad = false;
+    this.mostrarGrafDia = false;
+    this.mostrarGrafSolicitado = true;
+    this.mostrarGraRealizado = false;
+  }
+  ocultarGrafSolicitado(){
+    this.mostrarLogs = false;    
+    this.mostrarGrafEspecialidad = false;
+    this.mostrarGrafDia = false;
+    this.mostrarGrafSolicitado = false;
+    this.mostrarGraRealizado = false;
+  }
+
+  verGrafRealizado(){
+    this.mostrarLogs = false;    
+    this.mostrarGrafEspecialidad = false;
+    this.mostrarGrafDia = false;
+    this.mostrarGrafSolicitado = false;
+    this.mostrarGraRealizado = true;
+  }
+  ocultarGrafRealizado(){
+    this.mostrarLogs = false;    
+    this.mostrarGrafEspecialidad = false;
+    this.mostrarGrafDia = false;
+    this.mostrarGrafSolicitado = false;
+    this.mostrarGraRealizado = false;
   }
   
   

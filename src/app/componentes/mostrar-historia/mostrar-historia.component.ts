@@ -10,6 +10,8 @@ import { Historia } from 'src/app/clases/historia';
 export class MostrarHistoriaComponent implements OnInit {
 
   @Input()historia = [];
+  textoABuscar: string = '';
+  
   constructor() {}
 
   ngOnInit(): void {}
