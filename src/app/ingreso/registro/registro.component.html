@@ -309,12 +309,12 @@
 
                 <!-- <input type="checkbox" required> Acepto los términos y condiciones<br> -->
                 <!-- solo local funciona -->
-                <re-captcha class="captcha"
+                <!-- <re-captcha class="captcha"
                     formControlName="captcha"
                     name="captcha"
                     required
                     siteKey="6LeaMh4dAAAAAMqmHTJLTmfAdKZLNRNe3kcLV2a4"
-                ></re-captcha>
+                ></re-captcha> -->
 
                 <!-- <re-captcha class="captcha"
                     formControlName="captcha"
@@ -329,11 +329,26 @@
                     data-action='submit'>
                 Submit
                 </button> -->
+
+                <hr> 
+
+                  <div class="captcha-container">
+                    <p>Selecciona la imagen que muestra un <strong>{{ targetImage.description }}</strong>:</p>
+                    <div class="images">
+                      <img *ngFor="let image of images" [src]="image.src" (click)="selectImage(image)" [class.selected]="image === selectedImage">
+                    </div>
+                    <div *ngIf="isVerified !== null">
+                      <span *ngIf="isVerified">CAPTCHA correcto</span>
+                      <span *ngIf="!isVerified">CAPTCHA incorrecto</span>
+                    </div>
+                  </div>
+
+                <hr>
                 
 
                 <br>
                 <!-- <button class="botonSubmit" type="submit" [disabled]="formGroup.invalid">Crear cuenta</button> -->
-                <button class="botonSubmit-create" type="submit" >Crear cuenta</button>
+                <button class="botonSubmit-create" type="submit" [disabled]="!isVerified">Crear cuenta</button>
                 <p class="message">Ya estas registrado? <a [routerLink]="'/ingreso/login'" style="color: cornflowerblue;">Iniciar Sesion</a></p>
             </div>
             

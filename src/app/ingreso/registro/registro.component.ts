@@ -1,5 +1,5 @@
 import { FirebaseService } from './../../services/firebase.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/clases/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -18,6 +18,21 @@ import { AlertasService } from 'src/app/services/alertas.service';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
+
+
+  images = [
+    { src: 'assets/img/cat.jpg', description: 'un gato' },
+    { src: 'assets/img/dog.png', description: 'un perro' },
+    { src: 'assets/img/car.png', description: 'un coche' },
+    { src: 'assets/img/tree.jpg', description: 'un árbol' }
+  ];
+  targetImage: { src: string, description: string };
+  selectedImage: { src: string, description: string } = null;
+  isVerified: boolean = null; 
+
+
+
+
   flag: boolean = false;
   email: string ='';
   password: string = '';
@@ -139,7 +154,7 @@ export class RegistroComponent implements OnInit {
       'password': ['',Validators.required],
       'confirmarPassword': ['',Validators.required],
       'fotoPerfil': ['',Validators.required],
-      'captcha': ['',Validators.required],
+      // 'captcha': ['',Validators.required],
       'especialidad': ['',],
       'especialidadInput': ['',],
       'fileSource': ['', ],
@@ -149,6 +164,8 @@ export class RegistroComponent implements OnInit {
     { 
       validator: this.chequearClave('password', 'confirmarPassword')
     });
+ 
+    this.generateCaptcha();
   }
   prueba3(){
     console.log(this.formGroup.get('value'))
@@ -402,5 +419,24 @@ export class RegistroComponent implements OnInit {
       text: mensaje,
     })
   }
+
+
+
+
+
+  
+
+  generateCaptcha() {
+    this.targetImage = this.images[Math.floor(Math.random() * this.images.length)];
+  }
+
+  selectImage(image: { src: string, description: string }) {
+    this.selectedImage = image;
+    this.isVerified = this.selectedImage === this.targetImage;
+  }
+
+
+
+
 
 }
