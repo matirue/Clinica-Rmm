@@ -4,11 +4,14 @@
     flex-direction: column;
   }
   .botones{
-      display: flex;
-      flex-direction: row;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #000;
+    display: flex;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #000;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
   }
   .labelEspl{
       
@@ -33,6 +36,8 @@
     position: relative;
     margin-right: 10px; 
     margin-left: 10px; 
+    width: 100px;
+    height: 100px;
     
   }
   

@@ -52,15 +52,16 @@ export class AltaTurnoComponent implements OnInit {
 
     
     
-    this.fireSvc.getEspecialidades().subscribe((especialidades)=>{
-      // console.log(especialidades);
-      especialidades.forEach(element => {
+    // this.fireSvc.getEspecialidades().subscribe((especialidades)=>{
+    //   // console.log(especialidades);
+    //   especialidades.forEach(element => {
         
-        this.especialidades.push(element);
-        this.muestroEspecialidades = true;
-      });
+    //     this.especialidades.push(element);
+    //     this.muestroEspecialidades = true;
+    //   });
       
-    });
+    // });
+
     this.fireSvc.getAllUsers().subscribe((usuarios)=>{
       // console.log(this.turno);
       usuarios.forEach(usr => {
@@ -277,27 +278,30 @@ export class AltaTurnoComponent implements OnInit {
       this.seleccionePaciente = true;
     }
     this.medicoSeleccionado = e;
+    // console.log("medico elegido>>>");
     // console.log(this.medicoSeleccionado);
+
+    this.fireSvc.getEspecialidades().subscribe((especialidades) => {
+      // Filtrar especialidades para que solo queden las que coinciden con la descripción del médico seleccionado
+      this.especialidades = especialidades.filter((element) => 
+        this.medicoSeleccionado.descripcion.includes(element.nombre)
+      );
+  
+      // console.log("especialidades filtradas>>>");
+      // console.log(this.especialidades);
+    });
+
+    
     
     this.seleccioneMedico = true;
-    this.listadoTurnos = this.medicoSeleccionado.disponibilidadEsp;
+    // this.listadoTurnos = this.medicoSeleccionado.disponibilidadEsp;
 
     // console.log(this.listadoTurnos);
   }
   capturarEspSeleccionada(e){
     this.especialidadSeleccionada = e;
 
-    this.seleccioneEspecialidad = true;
-    // if(this.medicoSeleccionado.disponibilidadEsp.length > 0 && this.medicoSeleccionado.disponibilidadEsp != null){
-
-    //   this.medicoSeleccionado.disponibilidadEsp.forEach(turnos => {
-    //     if(turnos.especialidad == this.especialidadSeleccionada){
-  
-    //       this.listadoTurnos = turnos;
-    //       console.log(this.listadoTurnos);
-    //     }
-    //   });
-    // }
+    this.seleccioneEspecialidad = true; 
     
   }
   capturarEventoTomarTurno(e){
@@ -310,8 +314,23 @@ export class AltaTurnoComponent implements OnInit {
   }
   filtrarEspecialidad(especialidad: string){
     this.filtroEspecialidad = especialidad;
-    // console.log(this.filtroEspecialidad);
-    this.filtrarMedico();
+    console.log("esta>>>>>");
+    console.log(especialidad);
+    console.log("mando>>>>>");
+    console.log(this.medicoSeleccionado.disponibilidadEsp);
+    // this.filtrarMedico();
+    //aca123
+    //filtrar turnos por especialidad
+    // this.listadoTurnos = this.medicoSeleccionado.disponibilidadEsp;
+
+    const currentDate = new Date();
+
+    this.listadoTurnos = this.medicoSeleccionado.disponibilidadEsp.filter(turno => {
+      const turnoDate = new Date(turno.fecha.split('/').reverse().join('-')); // Asumiendo que la fecha está en formato 'dd/mm/yyyy'
+      return turno.especialidad === especialidad && turnoDate > currentDate;
+      // return turno.especialidad === especialidad;
+    }); 
+
   }
   filtrarMedico(){
     this.seleccioneMedico = false;

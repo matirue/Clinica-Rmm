@@ -9,10 +9,10 @@
             <button placement="top" delay="500" (click)="seleccionMedico(medico,medico.disponibilidadEsp[0])" style="background: url('{{medico.fotoPerfil}}') no-repeat; background-size: 300px;" class="btn buttonEspecialista btn-redondo appTooltip" ></button>
             <div class="card-body">
               <p class="card-text"><strong>Medico: </strong>{{medico | medico:medico}} </p>
-              <p class="card-text"><b>Especialidad: </b></p>
+              <!-- <p class="card-text"><b>Especialidad: </b></p>
               <div *ngFor="let esp of medico.descripcion">
                   <p class="card-text">{{esp}}</p>
-              </div>
+              </div> -->
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                 </div>

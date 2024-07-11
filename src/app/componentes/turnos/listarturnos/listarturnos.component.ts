@@ -22,11 +22,12 @@ export class ListarturnosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("TURNOS");
-    console.log(this.listadoTurnos);
+    // console.log("TURNOS");
+    // console.log(this.listadoTurnos);
     this.listadoTurnos.forEach(turno => {
       // console.log(turno.especialidad);
       turno.horarios.forEach(hora => {
+        // const formattedTime = this.convertTo12HourFormat(hora);
         // console.log(hora);
       });
     });
@@ -42,6 +43,13 @@ export class ListarturnosComponent implements OnInit {
     }
 
     this.eventoSeleccionHorario.emit(objAux)
+  }
+
+  convertTo12HourFormat(time: string): string {
+    const [hours, minutes] = time.split(':').map(num => parseInt(num, 10));
+    const period = hours >= 12 ? 'PM' : 'AM';
+    const hours12 = hours % 12 || 12; // Convierte 0 a 12 para la hora 12 AM/PM
+    return `${hours12}:${minutes.toString().padStart(2, '0')} ${period}`;
   }
   
 

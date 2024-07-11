@@ -4,15 +4,14 @@
   <br>
   <section class="layout">
     <div *ngFor="let especialidad of especialidades">
+      <h4>{{especialidad.nombre}}</h4>
       <a>
         <button>
-          <img class="bd-placeholder-img rounded-circle" width="100" height="100" src={{especialidad.img}} (click)="enviarEventoEspecialidad(especialidad.nombre)">
+          <img class="bd-placeholder-img rounded-circle" width="150" height="80" src={{especialidad.img}} (click)="enviarEventoEspecialidad(especialidad.nombre)">
         </button>
-      </a>
-
-      <h4>{{especialidad.nombre}}</h4>
+      </a>      
     </div>
-
+<!-- 
     <div>
       <a>
         <button >
@@ -21,5 +20,5 @@
       </a>
       <h4>Mostrar todos</h4>
       <p></p>
-    </div> 
+    </div>  -->
   </section> 

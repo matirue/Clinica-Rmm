@@ -14,6 +14,7 @@ export class ListarEspecialidadesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
     console.log(this.especialidades)
   }
   enviarEventoEspecialidad(especialidad:string){

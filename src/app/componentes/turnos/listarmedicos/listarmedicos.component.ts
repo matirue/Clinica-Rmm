@@ -19,30 +19,6 @@ export class ListarmedicosComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.especialistas);
-
-    // console.log(this.espAux)
-    // if(this.espAux.length == 0){
-      
-    //   if(this.filtroEspecialidad == 'todos'){
-    //       this.espAux = this.especialistas;
-    //       console.log(this.espAux)
-    //   }
-    //   else{
-    //     this.especialistas.forEach(esp => {
-    //       console.log(esp)
-
-    //       esp.descripcion.forEach(descr => {
-    //         console.log(descr)
-    //         if(descr == this.filtroEspecialidad){
-    //           this.espAux.push(esp);
-    //         }
-    //       });
-    //     });
-    //   }
-    // }
-    // else{
-    //   this.espAux = [];
-    // }
   }
 
   seleccionMedico(medico:User,especialidad?:string){

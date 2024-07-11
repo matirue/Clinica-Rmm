@@ -9,7 +9,8 @@
             </app-listarmedicos>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-6" *ngIf="seleccioneMedico">
+            
             <app-listar-especialidades [especialidades]="especialidades" (eventoFiltroEspecialidad)="filtrarEspecialidad($event)"></app-listar-especialidades>
         </div>
     </div>
@@ -19,13 +20,13 @@
             (eventoSeleccionEspecialidad)="capturarEspSeleccionada($event)" >        
         </app-listarmedicos>
     </div> -->
-    <div *ngIf="usuarioLogueado.admin && seleccioneMedico">
+    <!-- <div *ngIf="usuarioLogueado.admin && seleccioneMedico">
         <app-listar-pacientes 
             [listadoPacientes]="pacientes"
             (eventoSeleccionPaciente)="capturarSeleccionPaciente($event)"
             >
         </app-listar-pacientes>
-    </div>
+    </div> -->
     <div *ngIf="seleccioneMedico && seleccioneEspecialidad && seleccionePaciente" class="listadoTurnos">
         <app-listarturnos [listadoTurnos]="listadoTurnos"
         [especialidadSeleccionada]="especialidadSeleccionada"

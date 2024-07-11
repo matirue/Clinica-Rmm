@@ -1,9 +1,9 @@
 .container {
     background-color: antiquewhite;
-
+    height: 468px;
     .layout {
         width: 650px;
-        height: 768px;
+        height: 468px;
       
         display: grid;
         grid-template-rows: repeat(auto-fit, 1fr);

@@ -244,7 +244,7 @@ export class MiperfilComponent implements OnInit {
         }
         break;
     }
-    console.log(this.fechaSeleccionada);
+    // console.log(this.fechaSeleccionada);
   }
 
   ngOnInit(): void {

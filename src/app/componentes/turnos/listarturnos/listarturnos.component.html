@@ -3,14 +3,15 @@
     <br> 
     <div class="row">
         <div class="col-lg-2" *ngFor="let turno of listadoTurnos; let i = index" class="botones"> 
-            <p *ngIf="turno.horarios.length != 0" >Turnos disponibles para <b>{{turno.especialidad}}</b>:</p> 
+            <!-- <p *ngIf="turno.horarios.length != 0" >Turnos disponibles para <b>{{turno.especialidad}}</b>:</p>  -->
             <div *ngFor="let hora of turno.horarios">
                 <div *ngIf="hora.disponible == true">
                     <div>                
-                        <button (click)="seleccionTurno(turno.fecha,hora.hora)" width="100" height="100" class="btn buttonHorarios"> 
+                        <button (click)="seleccionTurno(turno.fecha,hora.hora)" class="btn buttonHorarios"> 
                             <div class="hora">
                                 <strong>{{turno.fecha}}</strong>
                                 <strong> {{hora.hora}}</strong> 
+                                <!-- <strong>{{ convertTo12HourFormat(hora) }}</strong> -->
                             </div>
                         </button>
                     </div>
