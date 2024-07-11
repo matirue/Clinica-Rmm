@@ -88,83 +88,102 @@
   <!-- <div id="chartContainer" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div>
   <div id="chartContainerTurnosDia" style="height: 370px; width: 100%; margin-left:auto;margin-right:auto;"></div> -->
    
-  <!-- ACA NO 
   
-  <div class="form" *ngIf="usuarioLogueado.admin">
-    <button  type="submit" (click)="descargarLogsAPDF()">
-      Descargar logs pdf
-    </button> 
-  </div>
-
-  <div id="chart0" *ngIf="usuarioLogueado.admin">
-    <table class="table table-striped form-group table-hover">
-      <thead>
+  
+  
+  <!-- Logs de usuarios -->
+  <div id="chart0" *ngIf="usuarioLogueado.admin" class="contenedorLogs">
+    <h2 class="text-center">Logs de usuarios</h2>
+    <div class="form" *ngIf="usuarioLogueado.admin">
+      <button class="buttonLogs" type="submit" (click)="descargarLogsAPDF()">
+        Descargar Logs
+      </button>
+    </div>
+  
+    <div class="container-table">
+      <table class="table table-striped form-group table-hover">
+        <thead>
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
-            <th>Dia de ingreso</th>
+            <th>Día de ingreso</th>
             <th>Hora de ingreso</th>
           </tr>
-      </thead>
-      <tbody>
-          <tr  *ngFor="let log of logs">
-            <td *ngIf="log.usuario.uid != null && log.usuario.uid != ''">{{log.usuario.nombre}}</td>
-            <td *ngIf="log.usuario.uid != null && log.usuario.uid != ''">{{log.usuario.apellido}}</td>
-            <td *ngIf="log.usuario.uid != null && log.usuario.uid != ''">{{log.usuario.email}}</td>
-            <td *ngIf="log.usuario.uid != null && log.usuario.uid != ''">{{log.dia.split('-').reverse().join('-')| date}}</td>
-            <td *ngIf="log.usuario.uid != null && log.usuario.uid != ''">{{log.hora}}</td>
+        </thead>
+        <tbody>
+          <tr *ngFor="let log of logs">
+            <td *ngIf="log.usuario && log.usuario.uid">{{log.usuario.nombre}}</td>
+            <td *ngIf="log.usuario && log.usuario.uid">{{log.usuario.apellido}}</td>
+            <td *ngIf="log.usuario && log.usuario.uid">{{log.usuario.email}}</td>
+            <td *ngIf="log.usuario && log.usuario.uid">{{log.dia | date: 'dd/MM/yyyy'}}</td>
+            <td *ngIf="log.usuario && log.usuario.uid">{{log.hora}}</td>
           </tr>
         </tbody>
-          
-    </table>
-  </div> -->
-
-<!-- ARREGLAR 
-<div id="charts" *ngIf="usuarioLogueado.admin">
-  
-  <div id="chart1" [chart]="chartCantPorDia"></div>
-  <div  id="chart1Aux"></div>
-  <div class="form">
-    <button  type="submit" (click)="descargarCantTurnosPorDiaAPdf()">
-      Descargar grafico a PDF
-    </button>
+      </table>
+    </div>    
   </div>
   
-  <div id="chart2" [chart]="chartEspPorTurno"></div>
-  <div class="form">
-  <button  type="submit" (click)="descargarCantEspPorTurno()">
-    Descargar grafico a PDF
-    </button>
-  </div>
 
-
-  <div >
-    <h2>Seleccione la fecha para filtrar la cantidad de turnos solicitados por medico</h2>
-    <input (change)="chartTurnosPorMedicoFecha()" [(ngModel)]="fechaSeleccionadaPicker" id="date" type="date">
-    
-  </div>
-  <div id="chart3" [chart]="chartTurnoPorMedicoFecha"></div>
-  <div class="form">
-    <button  type="submit" (click)="descargarCantTurnosSolicitados()">
+<!-- ARREGLAR -->
+<div class="container-chart0" id="charts" *ngIf="usuarioLogueado.admin">
+  
+  <div class="container-chart2">
+    <div id="chart2" [chart]="chartEspPorTurno"></div>
+    <div class="form">
+    <button class="buttonChart1" type="submit" (click)="descargarCantEspPorTurno()">
       Descargar grafico a PDF
-    </button>
+      </button>
+    </div>
   </div>
 
+  <br>
 
+  <div class="container-chart1">
+    <div id="chart1" [chart]="chartCantPorDia"></div>
+    <div  id="chart1Aux"></div>
+    <div class="form">
+      <button class="buttonChart1" type="submit" (click)="descargarCantTurnosPorDiaAPdf()">
+        Descargar grafico a PDF
+      </button>
+    </div>
+  </div>
+  
+  <br>
 
-  <div >
-    <h2>Seleccione la fecha para filtrar la cantidad de turnos realizados por medico</h2>
-    <input (change)="chartTurnosPorMedicoFechaFinalizado()" [(ngModel)]="fechaSeleccionadaPickerRealizado" id="date" type="date">
-    
+  <div class="container-chart3">
+    <div >
+      <h2>Seleccione la fecha para filtrar la cantidad de turnos solicitados por medico</h2>
+      <input (change)="chartTurnosPorMedicoFecha()" [(ngModel)]="fechaSeleccionadaPicker" id="date" type="date">
+      
+    </div>
+    <div id="chart3" [chart]="chartTurnoPorMedicoFecha"></div>
+    <div class="form">
+      <button class="buttonChart1" type="submit" (click)="descargarCantTurnosSolicitados()">
+        Descargar grafico a PDF
+      </button>
+    </div>
   </div>
-  <div id="chart4" [chart]="chartTurnoPorMedicoFechaFinalizado"></div>
-  <div class="form">
-    <button  type="submit" (click)="descargarCantTurnosFinalizados()">
-      Descargar grafico a PDF
-    </button>
+
+  <br>
+
+  <div class="container-chart4">
+    <div >
+      <h2>Seleccione la fecha para filtrar la cantidad de turnos realizados por medico</h2>
+      <input (change)="chartTurnosPorMedicoFechaFinalizado()" [(ngModel)]="fechaSeleccionadaPickerRealizado" id="date" type="date">
+      
+    </div>
+    <div id="chart4" [chart]="chartTurnoPorMedicoFechaFinalizado"></div>
+    <div class="form">
+      <button  class="buttonChart1" type="submit" (click)="descargarCantTurnosFinalizados()">
+        Descargar grafico a PDF
+      </button>
+    </div>
   </div>
-</div> -->
+
+  <br>
+
+</div> 
   <!-- <div *ngIf="usuarioLogueado.admin">
     <button (click)="descargarPdf()">
       Descargar pdf

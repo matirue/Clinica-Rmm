@@ -48,7 +48,7 @@ import { RouterModule } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
 import { PacienteAdminGuardGuard } from './guards/paciente-admin-guard.guard';
 import { ChartModule } from 'angular-highcharts';
-import { DatepipePipe } from './pipes/datepipe.pipe';
+import { DatepipePipe } from './pipes/datepipe.pipe'; 
 
 @NgModule({
   declarations: [
@@ -91,7 +91,7 @@ import { DatepipePipe } from './pipes/datepipe.pipe';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     NgSelectModule,
-    ChartModule
+    ChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

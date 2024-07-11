@@ -113,6 +113,44 @@
     font-weight: 700;
   }
 }
+.contenedorLogs {
+  margin: 100px 90px;
+  padding: 3% 5%;
+
+  background-color: #ffffff;
+  border-radius: 20px;
+
+  .container-table {
+    margin-top: 30px;
+    overflow-y: auto;
+    max-height: 450px; 
+  }
+
+  h2 {
+    font-weight: 700;
+    margin-bottom: 2%;
+  }
+
+  .form .buttonLogs {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #a3af4c;
+    width: 40%;
+    border: 0;
+    padding: 15px;
+    font-weight: 700; 
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .form .buttonLogs:hover,.form .buttonLogs:active,.form .buttonLogs:focus {
+    background: #7a8147;
+  }
+}
 
 .member2 .pic {
   overflow: hidden;
@@ -223,4 +261,57 @@
   }
   .form button:hover,.form button:active,.form button:focus {
     background: #43A047;
+  }
+
+
+  .container-chart0{
+    margin: 5%;
+  }
+
+  .container-chart1 {
+    border-radius: 15px;
+    background-color: #fff;
+
+    padding: 3%; 
+  }
+
+  .form .buttonChart1 {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #a3af4c;
+    width: 50%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .form .buttonChart1:hover, .form .buttonChart1:active, .form .buttonChart1:focus {
+    background: #7a8147;
+  }
+
+  .container-chart2 {
+    border-radius: 15px;
+    background-color: #fff;
+
+    padding: 3%;
+  }
+
+  .container-chart3 {
+    border-radius: 20px;
+    background-color: #fff;
+
+    padding: 3%;
+  }
+
+  .container-chart4 {
+    border-radius: 20px;
+    background-color: #fff;
+
+    padding: 3%;
   }

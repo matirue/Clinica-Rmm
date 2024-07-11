@@ -260,7 +260,10 @@ export class FirebaseService {
 
   }
   getAllLogs(){
-    return this.logs;
+    // return this.logs;
+    return this.db.collection('logs').valueChanges();
   }
+
+
   ////#endregion
 }

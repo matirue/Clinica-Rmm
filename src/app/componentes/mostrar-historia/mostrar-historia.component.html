@@ -28,9 +28,11 @@
             <p><strong>Presion: </strong>{{auxhistoria.historia.presion}}</p>
 
             <strong>Diagnostico:</strong>
-            <p>Observacion: {{auxhistoria.historia.clave}} ({{auxhistoria.historia.valor}}) </p>
+            <p><b>Caries</b>: {{auxhistoria.historia.clave}} ({{auxhistoria.historia.valor}}) </p>
 
-            <p>Medicacion: {{auxhistoria.historia.clave2}}: {{auxhistoria.historia.valor2}}</p>
+            <p *ngIf="auxhistoria.historia.clave2 != ''"><b>Medicación</b>: {{auxhistoria.historia.clave2}}: {{auxhistoria.historia.valor2}}</p> 
+
+            <p *ngIf="auxhistoria.historia.clave3 && auxhistoria.historia.clave3 != ''"><b>Otros</b>: {{auxhistoria.historia.clave3}}: {{auxhistoria.historia.valor3}}</p>
             
             <div *ngIf="auxhistoria.resenia != ''">
               <strong>Reseña:</strong> {{auxhistoria.resenia}}

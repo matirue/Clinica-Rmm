@@ -12,7 +12,8 @@ import { ExportExcelService } from 'src/app/services/export-excel.service';
 import { ExportarPdfService } from 'src/app/services/exportar-pdf.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import * as CanvasJS from './../../canvasjs.min';
-import * as html2canvas from 'html2canvas';
+// import * as html2canvas from 'html2canvas';
+import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import * as $ from "jquery";
 import { Chart } from 'angular-highcharts';
@@ -23,6 +24,7 @@ import { Logs } from 'src/app/clases/logs';
 import { first } from 'rxjs/operators';
 import Canvg from 'canvg';
 import { AlertasService } from 'src/app/services/alertas.service';
+import { autoTable, RowInput } from 'jspdf-autotable';
 
 @Component({
   selector: 'app-miperfil',
@@ -30,6 +32,9 @@ import { AlertasService } from 'src/app/services/alertas.service';
   styleUrls: ['./miperfil.component.css']
 })
 export class MiperfilComponent implements OnInit {
+
+  page: number = 1; // Página actual
+  pageSize: number = 10; // Tamaño de página
 
   @ViewChild('chartContainer') chartContainer: ElementRef;
   @ViewChild('chartContainerTurnosDia') chartContainerTurnosDia: ElementRef;
@@ -301,11 +306,12 @@ export class MiperfilComponent implements OnInit {
       // console.log(this.estados)
     });
 
-    this.fireSvc.getAllLogs().pipe(first())
-    .toPromise()
-    .then(logs=>{
-      this.logs = logs;
-    })
+    
+    this.fireSvc.getAllLogs().subscribe((data: any[]) => {
+      this.logs = data;
+      // console.log("logs>>>>>>");
+      // console.log(this.logs); 
+    });
 
 
     this.fireSvc.getAllUsers().pipe(first())
@@ -598,7 +604,7 @@ export class MiperfilComponent implements OnInit {
             type: 'pie'
           },
           title: {
-            text: 'Cantidad de especialidad por turnos'
+            text: 'Cantidad de turnos por especialidad'
           },
           credits: {
             // enabled: false
@@ -871,23 +877,26 @@ export class MiperfilComponent implements OnInit {
     return retorno;
   }
   
-  descargarLogsAPDF(){
-    var doc = new jsPDF();
-    let table = window.document.getElementById("chart0");
-    var width = doc.internal.pageSize.getWidth();
-    var height = doc.internal.pageSize.getHeight();
-    // let imgTable;
-    html2canvas.default(table).then(function (canvas)
-    {
-      
-      let imgTable = canvas.toDataURL("image/png");
-      doc.addImage(imgTable,'JPG',20,20,width,height)
-      doc.save('logs.pdf');
+  // descargarLogsAPDF(){
+  //   var doc = new jsPDF();
+  //   let table = window.document.getElementById("chart0");
+  //   var width = doc.internal.pageSize.getWidth();
+  //   var height = doc.internal.pageSize.getHeight();
+  //   // let imgTable;
+  //   html2canvas.default(table).then(function (canvas)
+  //   {
+  //     let imgTable = canvas.toDataURL("image/png");
+  //     doc.addImage(imgTable,'JPG',10,10,300,300)
+  //     doc.save('logs.pdf');
+  //   });
+ 
 
+  // }
 
-    });
-
+  descargarLogsAPDF(): void { 
+    this.pdf.exportarLogs(this.logs);    
   }
+
   descargarCantTurnosPorDiaAPdf(){
     let v = null;
     
@@ -977,13 +986,6 @@ export class MiperfilComponent implements OnInit {
       doc.save('cantidadTurnosFinalizadosFecha.pdf');
     });
   }
-  // SVG2PNG(svg, callback) {
-  //   var canvas = document.createElement('canvas'); // Create a Canvas element.
-  //   var ctx = canvas.getContext('2d'); // For Canvas returns 2D graphic.
-  //   var data = svg.outerHTML; // Get SVG element as HTML code.
-  //   canvg(canvas, data); // Render SVG on Canvas.
-  //   callback(canvas); // Execute callback function.
-  // }
 
   base64SvgToBase64Png (originalBase64, width) {
     

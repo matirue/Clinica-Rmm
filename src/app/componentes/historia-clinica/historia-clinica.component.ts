@@ -20,8 +20,10 @@ export class HistoriaClinicaComponent implements OnInit {
   presion: number;
   clave1: string;
   valor1: number;
-  clave2: string;
-  valor2: number;
+  clave2: string = "";
+  valor2: number = 0;
+  clave3: string = "";
+  valor3: number = 0;
   
   
   @Input()turnoSeleccionado: Turnos;
@@ -47,8 +49,10 @@ export class HistoriaClinicaComponent implements OnInit {
         'presion': ['',Validators.required],
         'clave': ['',Validators.required],
         'valor': ['',Validators.required],
-        'clave2': ['',Validators.required],
-        'valor2': ['',Validators.required],
+        'clave2': [''],
+        'valor2': [''],        
+        'clave3': [''],
+        'valor3': [''],
         
       });
       // console.log("hola")
