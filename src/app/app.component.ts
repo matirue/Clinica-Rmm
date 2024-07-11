@@ -6,8 +6,8 @@ import { slideInOutAnimation, slideTurno } from './route-transition-animations';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  // animations: [slideInOutAnimation, slideTurno], 
-  //   host: { '[@slideInOutAnimation]': '' }
+  animations: [slideInOutAnimation, slideTurno], 
+    host: { '[@slideInOutAnimation]': '' }
   
 })
 export class AppComponent {

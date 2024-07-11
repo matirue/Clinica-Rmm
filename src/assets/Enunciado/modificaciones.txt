@@ -25,17 +25,17 @@ Estos botones deben ser cuadrados. Formato (2021-09-09 1:15 PM)
 *********************************************************************************************************************************************************
 4/7
 
--Sección Pacientes, para los especialistas. Solo deberá mostrar los usuarios que el especialista haya atendido al menos 1 vez.
+OK -Sección Pacientes, para los especialistas. Solo deberá mostrar los usuarios que el especialista haya atendido al menos 1 vez.
 mostrar los usuarios con CARD , con un detalle de CUANDO FUERON LOS ULTIMOS 3 TURNOS  con acceso a historia clinica
 
 -Sección usuarios solamente para el perfil Administrador, un excel con los datos de los usuarios. 
 mostrar los usuarios con CARD y al seleccionarlo me descarga los datos de que turnos tomo y con quien
 
--Mi perfilPara los usuarios paciente, un pdf con la historia clínica. El PDF tiene que tener
+-Mi perfil Para los usuarios paciente, un pdf con la historia clínica. El PDF tiene que tener
 logo de la clínica, título del informe y fecha de emisión.
 Poder bajar Todas las atenciones que realice segun una ESPECIALIDAD
 
--Animaciones Se debe agregar al menos 2, como mínimo, animaciones de transición entre componentes al navegar
+OK -Animaciones Se debe agregar al menos 2, como mínimo, animaciones de transición entre componentes al navegar
 la aplicación. izquierda a derecha
 
 *********************************************************************************************************************************************************
