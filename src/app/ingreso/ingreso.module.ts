@@ -20,6 +20,7 @@ import { LogueorapidoComponent } from './logueorapido/logueorapido.component';
 
 import { RecaptchaFormsModule, RecaptchaModule, ReCaptchaV3Service, RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY  } from 'ng-recaptcha';
 import { EnterDirective } from '../directivas/enter.directive';
+import { VerifyCaptchaDirective } from '../directivas/verify-captcha.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EnterDirective } from '../directivas/enter.directive';
     LoginComponent,
     RegistroComponent,
     LogueorapidoComponent,
-    EnterDirective
+    EnterDirective,
+    VerifyCaptchaDirective
   ],
   imports: [
     CommonModule,

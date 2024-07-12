@@ -14,13 +14,31 @@ export class LogueorapidoComponent implements OnInit {
   // spinner:boolean = true;
 
   usuariosFiltrados: any[] = [];
-  private correosOrdenados = [
+  private correosOrdenados_original = [
     'paciente_a@gmail.com',
     'paciente_b@gmail.com',
     'paciente_c@gmail.com',
     'test.facundo.balsano@gmail.com', 
     'test.patricia.lu@gmail.com',
     'matiasrue@gmail.com'
+  ];
+
+  private correosOrdenados = [
+    'paciente_a@gmail.com',
+    'paciente_b@gmail.com',
+    'paciente_c@gmail.com',
+    'test.facundo.balsano@gmail.com', 
+    'test.patricia.lu@gmail.com',
+    'mmaurorueda@gmail.com'
+  ];
+
+  private correosOrdenados2 = [
+    'paciente_a@gmail.com',
+    'paciente_b@gmail.com',
+    'paciente_c@gmail.com',
+    'dr.balsano@gmail.com', 
+    'juan@gmail.com',
+    'mmaurorueda@gmail.com'
   ];
 
 

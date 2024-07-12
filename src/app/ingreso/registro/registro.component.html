@@ -332,10 +332,17 @@
 
                 <hr> 
 
-                  <div class="captcha-container">
+                <div class="captcha-container">
                     <p>Selecciona la imagen que muestra un <strong>{{ targetImage.description }}</strong>:</p>
                     <div class="images">
-                      <img *ngFor="let image of images" [src]="image.src" (click)="selectImage(image)" [class.selected]="image === selectedImage">
+                        <img *ngFor="let image of images"
+                        [src]="image.src"
+                        (click)="onImageSelect(image)"
+                        appVerifyCaptcha
+                        [targetImage]="targetImage"
+                        [selectedImage]="image"
+                        (verificationResult)="onVerificationResult($event)"
+                        [class.selected]="image === selectedImage">
                     </div>
                     <div *ngIf="isVerified !== null">
                       <span *ngIf="isVerified">CAPTCHA correcto</span>

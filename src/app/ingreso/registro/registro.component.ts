@@ -12,6 +12,7 @@ import Swal from'sweetalert2';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { AlertasService } from 'src/app/services/alertas.service';
 
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -63,6 +64,7 @@ export class RegistroComponent implements OnInit {
   subirArchivos:boolean = false;
   
   seLogueoAdmin:boolean = false;
+  // seLogueoAdmin:boolean = true;
   adminLogueado:User = new User();
   tarea: any;
 
@@ -426,15 +428,27 @@ export class RegistroComponent implements OnInit {
 
   
 
+  // generateCaptcha() {
+  //   this.targetImage = this.images[Math.floor(Math.random() * this.images.length)];
+  // }
+
+  // selectImage(image: { src: string, description: string }) {
+  //   this.selectedImage = image;
+  //   this.isVerified = this.selectedImage === this.targetImage;
+  // }
+
+
   generateCaptcha() {
     this.targetImage = this.images[Math.floor(Math.random() * this.images.length)];
   }
 
-  selectImage(image: { src: string, description: string }) {
+  onImageSelect(image: { src: string, description: string }) {
     this.selectedImage = image;
-    this.isVerified = this.selectedImage === this.targetImage;
   }
 
+  onVerificationResult(result: boolean) {
+    this.isVerified = result;
+  }
 
 
 

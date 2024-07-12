@@ -49,7 +49,8 @@ import { AdminGuard } from './guards/admin.guard';
 import { PacienteAdminGuardGuard } from './guards/paciente-admin-guard.guard';
 import { ChartModule } from 'angular-highcharts';
 import { DatepipePipe } from './pipes/datepipe.pipe';
-import { PacientesComponent } from './componentes/pacientes/pacientes.component'; 
+import { PacientesComponent } from './componentes/pacientes/pacientes.component';
+import { VerifyCaptchaDirective } from './directivas/verify-captcha.directive'; 
 
 @NgModule({
   declarations: [

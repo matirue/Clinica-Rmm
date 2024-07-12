@@ -14,8 +14,8 @@ OK - Estas imágenes deben estar en botones cuadrados con bordes redondeados
 27/6
 
 * Sacar un turno
-- Comienza mostrando los PROFESIONALES en botones cuadrados con la imagen del mismo
-- Una vez seleccionado mostrará las ESPECIALIDADES, en botones rectangulares, con la imagen de la especialidad. E
+OK - Comienza mostrando los PROFESIONALES en botones cuadrados con la imagen del mismo
+OK - Una vez seleccionado mostrará las ESPECIALIDADES, en botones rectangulares, con la imagen de la especialidad. E
 En caso de no tener muestra imagen por default. También debe mostrar el nombre de la especialidad arriba del botón.
 - Una vez seleccionada la especialidad, aparecerán los días y horarios con turnos disponibles para ese PROFESIONAL. 
 Estos botones deben ser cuadrados. Formato (2021-09-09 1:15 PM)

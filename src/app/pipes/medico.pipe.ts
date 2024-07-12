@@ -12,7 +12,7 @@ export class MedicoPipe implements PipeTransform {
       
       // console.log(items)
       // console.log(value)
-      return value.nombre + " " +value.apellido;
+      return value.nombre + ", " +value.apellido;
       
   }
 
