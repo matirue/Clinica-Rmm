@@ -22,8 +22,8 @@ export class ListarturnosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // console.log("TURNOS");
-    // console.log(this.listadoTurnos);
+    console.log("TURNOS");
+    console.log(this.listadoTurnos);
     this.listadoTurnos.forEach(turno => {
       // console.log(turno.especialidad);
       turno.horarios.forEach(hora => {

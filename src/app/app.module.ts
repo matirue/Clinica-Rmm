@@ -50,7 +50,8 @@ import { PacienteAdminGuardGuard } from './guards/paciente-admin-guard.guard';
 import { ChartModule } from 'angular-highcharts';
 import { DatepipePipe } from './pipes/datepipe.pipe';
 import { PacientesComponent } from './componentes/pacientes/pacientes.component';
-import { VerifyCaptchaDirective } from './directivas/verify-captcha.directive'; 
+import { VerifyCaptchaDirective } from './directivas/verify-captcha.directive';
+import { TimeFormatPipe } from './pipes/time-format.pipe'; 
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { VerifyCaptchaDirective } from './directivas/verify-captcha.directive';
     MedicoPipe,
     DatepipePipe,
     PacientesComponent,
+    TimeFormatPipe,
   ],
   imports: [
     BrowserModule,

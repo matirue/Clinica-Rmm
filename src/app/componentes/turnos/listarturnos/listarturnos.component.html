@@ -11,7 +11,7 @@
                             <div class="hora">
                                 <strong>{{turno.fecha}}</strong>
                                 <strong> {{hora.hora}}</strong> 
-                                <!-- <strong>{{ convertTo12HourFormat(hora) }}</strong> -->
+                                <strong>{{hora.hora | timeFormat}}</strong> 
                             </div>
                         </button>
                     </div>
