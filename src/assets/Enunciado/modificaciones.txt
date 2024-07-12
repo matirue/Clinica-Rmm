@@ -1,4 +1,4 @@
-13/6
+13/6 spr1
 
 OK* Botones de Acceso rápido 
 OK- Deben ser botones cuadrados con bordes redondeados
@@ -11,19 +11,19 @@ elección mostrará un formulario correspondiente.
 OK - Estas imágenes deben estar en botones cuadrados con bordes redondeados
 
 *********************************************************************************************************************************************************
-27/6
+27/6 spr2
 
 * Sacar un turno
 OK - Comienza mostrando los PROFESIONALES en botones cuadrados con la imagen del mismo
 OK - Una vez seleccionado mostrará las ESPECIALIDADES, en botones rectangulares, con la imagen de la especialidad. E
 En caso de no tener muestra imagen por default. También debe mostrar el nombre de la especialidad arriba del botón.
-- Una vez seleccionada la especialidad, aparecerán los días y horarios con turnos disponibles para ese PROFESIONAL. 
+OK - Una vez seleccionada la especialidad, aparecerán los días y horarios con turnos disponibles para ese PROFESIONAL. 
 Estos botones deben ser cuadrados. Formato (2021-09-09 1:15 PM)
 
 
 
 *********************************************************************************************************************************************************
-4/7
+4/7 spr3
 
 OK -Sección Pacientes, para los especialistas. Solo deberá mostrar los usuarios que el especialista haya atendido al menos 1 vez.
 mostrar los usuarios con CARD , con un detalle de CUANDO FUERON LOS ULTIMOS 3 TURNOS  con acceso a historia clinica
@@ -39,6 +39,14 @@ OK -Animaciones Se debe agregar al menos 2, como mínimo, animaciones de transic
 la aplicación. izquierda a derecha
 
 *********************************************************************************************************************************************************
+
+
+
+
+
+
+
+
 
 
 
